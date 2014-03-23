@@ -1,4 +1,4 @@
-sdl-jewel
+SDL-Jewel
 =========
 
-SDL demo app. (Mac OS X project)
+SDL demo game. (Mac OS X project)
