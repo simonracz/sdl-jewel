@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F443313818DF9A3C00C52CCB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F443313718DF9A3C00C52CCB /* main.cpp */; };
-		F443313A18DF9A3C00C52CCB /* sdl_jewel.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F443313918DF9A3C00C52CCB /* sdl_jewel.1 */; };
 		F443314118DF9AF600C52CCB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F443314018DF9AF600C52CCB /* Cocoa.framework */; };
 		F443314318DF9B0400C52CCB /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F443314218DF9B0400C52CCB /* SDL2.framework */; };
 		F443314518DF9B2D00C52CCB /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F443314418DF9B2D00C52CCB /* SDL2_image.framework */; };
@@ -21,7 +20,6 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				F443313A18DF9A3C00C52CCB /* sdl_jewel.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -30,10 +28,9 @@
 /* Begin PBXFileReference section */
 		F443313418DF9A3C00C52CCB /* sdl-jewel */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "sdl-jewel"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F443313718DF9A3C00C52CCB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		F443313918DF9A3C00C52CCB /* sdl_jewel.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = sdl_jewel.1; sourceTree = "<group>"; };
 		F443314018DF9AF600C52CCB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		F443314218DF9B0400C52CCB /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
-		F443314418DF9B2D00C52CCB /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = ../../../../../Library/Frameworks/SDL2_image.framework; sourceTree = "<group>"; };
+		F443314218DF9B0400C52CCB /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = /Library/Frameworks/SDL2.framework; sourceTree = "<absolute>"; };
+		F443314418DF9B2D00C52CCB /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = /Library/Frameworks/SDL2_image.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,11 +50,9 @@
 		F443312B18DF9A3C00C52CCB = {
 			isa = PBXGroup;
 			children = (
-				F443314418DF9B2D00C52CCB /* SDL2_image.framework */,
-				F443314218DF9B0400C52CCB /* SDL2.framework */,
-				F443314018DF9AF600C52CCB /* Cocoa.framework */,
 				F443313618DF9A3C00C52CCB /* sdl-jewel */,
 				F443313518DF9A3C00C52CCB /* Products */,
+				F443314618DF9B5C00C52CCB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -73,9 +68,18 @@
 			isa = PBXGroup;
 			children = (
 				F443313718DF9A3C00C52CCB /* main.cpp */,
-				F443313918DF9A3C00C52CCB /* sdl_jewel.1 */,
 			);
 			path = "sdl-jewel";
+			sourceTree = "<group>";
+		};
+		F443314618DF9B5C00C52CCB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F443314418DF9B2D00C52CCB /* SDL2_image.framework */,
+				F443314218DF9B0400C52CCB /* SDL2.framework */,
+				F443314018DF9AF600C52CCB /* Cocoa.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
