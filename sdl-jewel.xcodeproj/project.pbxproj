@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F443313818DF9A3C00C52CCB /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F443313718DF9A3C00C52CCB /* main.cpp */; };
 		F443313A18DF9A3C00C52CCB /* sdl_jewel.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = F443313918DF9A3C00C52CCB /* sdl_jewel.1 */; };
+		F443314118DF9AF600C52CCB /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F443314018DF9AF600C52CCB /* Cocoa.framework */; };
+		F443314318DF9B0400C52CCB /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F443314218DF9B0400C52CCB /* SDL2.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +30,8 @@
 		F443313418DF9A3C00C52CCB /* sdl-jewel */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "sdl-jewel"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F443313718DF9A3C00C52CCB /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		F443313918DF9A3C00C52CCB /* sdl_jewel.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = sdl_jewel.1; sourceTree = "<group>"; };
+		F443314018DF9AF600C52CCB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F443314218DF9B0400C52CCB /* SDL2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2.framework; path = ../../../../../Library/Frameworks/SDL2.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F443314318DF9B0400C52CCB /* SDL2.framework in Frameworks */,
+				F443314118DF9AF600C52CCB /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +50,8 @@
 		F443312B18DF9A3C00C52CCB = {
 			isa = PBXGroup;
 			children = (
+				F443314218DF9B0400C52CCB /* SDL2.framework */,
+				F443314018DF9AF600C52CCB /* Cocoa.framework */,
 				F443313618DF9A3C00C52CCB /* sdl-jewel */,
 				F443313518DF9A3C00C52CCB /* Products */,
 			);
@@ -197,6 +205,10 @@
 		F443313E18DF9A3C00C52CCB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks,
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -204,6 +216,10 @@
 		F443313F18DF9A3C00C52CCB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					/Library/Frameworks,
+					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
