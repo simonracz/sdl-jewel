@@ -41,6 +41,8 @@
 		F443314D18E0AF3500C52CCB /* Table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Table.cpp; sourceTree = "<group>"; };
 		F443314E18E0AF3500C52CCB /* Table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Table.h; sourceTree = "<group>"; };
 		F443315118E0E44600C52CCB /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
+		F443315418E0EB9200C52CCB /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		F443315518E0EB9200C52CCB /* gems.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gems.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		F443313618DF9A3C00C52CCB /* sdl-jewel */ = {
 			isa = PBXGroup;
 			children = (
+				F443315318E0EB9200C52CCB /* Assets */,
 				F443313718DF9A3C00C52CCB /* main.cpp */,
 				F443314A18E072CD00C52CCB /* Sprite.cpp */,
 				F443314B18E072CD00C52CCB /* Sprite.h */,
@@ -97,6 +100,15 @@
 				F443314018DF9AF600C52CCB /* Cocoa.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F443315318E0EB9200C52CCB /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				F443315418E0EB9200C52CCB /* bg.png */,
+				F443315518E0EB9200C52CCB /* gems.png */,
+			);
+			path = Assets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
