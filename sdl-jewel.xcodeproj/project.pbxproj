@@ -13,6 +13,7 @@
 		F443314518DF9B2D00C52CCB /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F443314418DF9B2D00C52CCB /* SDL2_image.framework */; };
 		F443314918DF9F2400C52CCB /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F443314718DF9F2400C52CCB /* Application.cpp */; };
 		F443314C18E072CD00C52CCB /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F443314A18E072CD00C52CCB /* Sprite.cpp */; };
+		F443314F18E0AF3500C52CCB /* Table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F443314D18E0AF3500C52CCB /* Table.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,8 @@
 		F443314818DF9F2400C52CCB /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
 		F443314A18E072CD00C52CCB /* Sprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sprite.cpp; sourceTree = "<group>"; };
 		F443314B18E072CD00C52CCB /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
+		F443314D18E0AF3500C52CCB /* Table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Table.cpp; sourceTree = "<group>"; };
+		F443314E18E0AF3500C52CCB /* Table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Table.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +79,8 @@
 				F443313718DF9A3C00C52CCB /* main.cpp */,
 				F443314A18E072CD00C52CCB /* Sprite.cpp */,
 				F443314B18E072CD00C52CCB /* Sprite.h */,
+				F443314D18E0AF3500C52CCB /* Table.cpp */,
+				F443314E18E0AF3500C52CCB /* Table.h */,
 				F443314718DF9F2400C52CCB /* Application.cpp */,
 				F443314818DF9F2400C52CCB /* Application.h */,
 			);
@@ -145,6 +150,7 @@
 			files = (
 				F443314918DF9F2400C52CCB /* Application.cpp in Sources */,
 				F443313818DF9A3C00C52CCB /* main.cpp in Sources */,
+				F443314F18E0AF3500C52CCB /* Table.cpp in Sources */,
 				F443314C18E072CD00C52CCB /* Sprite.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
