@@ -67,21 +67,21 @@ void Table::fillTable()
 	
 void Table::filterColors(Node& node, std::set<NodeType>& allowedColors)
 {
-	int neighbor = node.up();
-	if ((neighbor != Node::END) && (nodes[neighbor].type != NodeType::None)) {
-		allowedColors.erase(nodes[neighbor].type);
+	Node neighbor = up(node.index);
+	if ((neighbor.type != NodeType::None) && (up(neighbor.index)).type == neighbor.type) {
+		allowedColors.erase(neighbor.type);
 	}
-	neighbor = node.down();
-	if ((neighbor != Node::END) && (nodes[neighbor].type != NodeType::None)) {
-		allowedColors.erase(nodes[neighbor].type);
+	neighbor = down(node.index);
+	if ((neighbor.type != NodeType::None) && (down(neighbor.index)).type == neighbor.type) {
+		allowedColors.erase(neighbor.type);
 	}
-	neighbor = node.left();
-	if ((neighbor != Node::END) && (nodes[neighbor].type != NodeType::None)) {
-		allowedColors.erase(nodes[neighbor].type);
+	neighbor = left(node.index);
+	if ((neighbor.type != NodeType::None) && (left(neighbor.index)).type == neighbor.type) {
+		allowedColors.erase(neighbor.type);
 	}
-	neighbor = node.right();
-	if ((neighbor != Node::END) && (nodes[neighbor].type != NodeType::None)) {
-		allowedColors.erase(nodes[neighbor].type);
+	neighbor = right(node.index);
+	if ((neighbor.type != NodeType::None) && (right(neighbor.index)).type == neighbor.type) {
+		allowedColors.erase(neighbor.type);
 	}
 }
 	

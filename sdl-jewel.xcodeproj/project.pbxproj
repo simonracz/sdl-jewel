@@ -14,6 +14,7 @@
 		F443314918DF9F2400C52CCB /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F443314718DF9F2400C52CCB /* Application.cpp */; };
 		F443314C18E072CD00C52CCB /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F443314A18E072CD00C52CCB /* Sprite.cpp */; };
 		F443314F18E0AF3500C52CCB /* Table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F443314D18E0AF3500C52CCB /* Table.cpp */; };
+		F443315818E0EF3100C52CCB /* LevelScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F443315618E0EF3100C52CCB /* LevelScene.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +44,8 @@
 		F443315118E0E44600C52CCB /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
 		F443315418E0EB9200C52CCB /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		F443315518E0EB9200C52CCB /* gems.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gems.png; sourceTree = "<group>"; };
+		F443315618E0EF3100C52CCB /* LevelScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LevelScene.cpp; sourceTree = "<group>"; };
+		F443315718E0EF3100C52CCB /* LevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelScene.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				F443315118E0E44600C52CCB /* Node.h */,
 				F443314D18E0AF3500C52CCB /* Table.cpp */,
 				F443314E18E0AF3500C52CCB /* Table.h */,
+				F443315618E0EF3100C52CCB /* LevelScene.cpp */,
+				F443315718E0EF3100C52CCB /* LevelScene.h */,
 				F443314718DF9F2400C52CCB /* Application.cpp */,
 				F443314818DF9F2400C52CCB /* Application.h */,
 			);
@@ -166,6 +171,7 @@
 				F443313818DF9A3C00C52CCB /* main.cpp in Sources */,
 				F443314F18E0AF3500C52CCB /* Table.cpp in Sources */,
 				F443314C18E072CD00C52CCB /* Sprite.cpp in Sources */,
+				F443315818E0EF3100C52CCB /* LevelScene.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
