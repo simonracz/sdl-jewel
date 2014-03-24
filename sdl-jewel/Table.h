@@ -9,10 +9,10 @@
 #ifndef __sdl_jewel__Table__
 #define __sdl_jewel__Table__
 
-#include <utility>
 #include <vector>
 #include <set>
-#include <algorithm>
+#include <utility>
+#include <random>
 #include "SDL2/SDL.h"
 
 namespace jewel {
@@ -25,23 +25,24 @@ enum class Direction : char {
 };
 
 enum class NodeType : char {
-	Green,
+	Green = 0,
 	Red,
 	Yellow,
 	Blue,
-	Purple
+	Purple,
+	None
 };
 
 /**
  * The current maximum table size is 15x15
  * Index 255 means there is no neighbor
  * This Node is very general. It supports complex levels, e.g. antigravity
- * A more general Node could store a state too, e.g. it changes it's neighbors based on it's actual state.
+ * A more general Node could store a state too, e.g. it could change it's neighbors based on it's actual state.
  */
 struct Node{
 public:
-	Uint32 neighbors{};
-	NodeType type{NodeType::Green};
+	Uint32 neighbors{0xFFFFFFFF};
+	NodeType type{NodeType::None};
 	Uint8 index{0};
 	
 	Node();
@@ -71,11 +72,13 @@ private:
 	std::vector<Node> nodes;
 	int width;
 	int height;
+	std::vector<std::uniform_int_distribution<int>> distributions;
+	std::mt19937 m;
 public:
 	//It creates the 8x8 demo level
 	Table();
 	
-	//To load an arbitrary level
+	//To load an arbitrary level from a data file
 	//Table(std::string path);
 	
 	//returns Node::END for empty Nodes
@@ -101,6 +104,10 @@ public:
 	//second element is the direction
 	void check(std::set<std::pair<int,Direction>>& results);
 	void applyNextStep(std::set<int>& newNodes);
+private:
+	//helper functions
+	void fillTable();
+	void filterColors(Node& node, std::set<NodeType>& allowedColors);
 };
 
 	
@@ -127,6 +134,11 @@ int Node::getIndex()
 	return index;
 }
 
+Node::Node()
+{
+	//empty
+}
+	
 Node::Node(Uint8 index, NodeType type) : index(index), type(type)
 {
 	//empty
@@ -163,6 +175,7 @@ void Node::swap(Node& theOther)
 	std::swap(neighbors, theOther.neighbors);
 	std::swap(type, theOther.type);
 }
+
 	
 } //namespace
 
