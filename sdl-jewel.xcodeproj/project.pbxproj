@@ -40,6 +40,7 @@
 		F443314B18E072CD00C52CCB /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
 		F443314D18E0AF3500C52CCB /* Table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Table.cpp; sourceTree = "<group>"; };
 		F443314E18E0AF3500C52CCB /* Table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Table.h; sourceTree = "<group>"; };
+		F443315118E0E44600C52CCB /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +80,7 @@
 				F443313718DF9A3C00C52CCB /* main.cpp */,
 				F443314A18E072CD00C52CCB /* Sprite.cpp */,
 				F443314B18E072CD00C52CCB /* Sprite.h */,
+				F443315118E0E44600C52CCB /* Node.h */,
 				F443314D18E0AF3500C52CCB /* Table.cpp */,
 				F443314E18E0AF3500C52CCB /* Table.h */,
 				F443314718DF9F2400C52CCB /* Application.cpp */,

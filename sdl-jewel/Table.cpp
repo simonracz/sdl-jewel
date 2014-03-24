@@ -7,7 +7,6 @@
 //
 
 #include "Table.h"
-#include <random>
 #include <chrono>
 
 namespace jewel {
@@ -86,7 +85,6 @@ void Table::filterColors(Node& node, std::set<NodeType>& allowedColors)
 	}
 }
 	
-//returns Node::END for empty Nodes
 Node& Table::up(int index)
 {
 	int ret = nodes[index].up();
@@ -94,22 +92,40 @@ Node& Table::up(int index)
 		return nullNode;
 	}
 	
-	return nodes[nodes[index].up()];
+	return nodes[ret];
 }
 
 Node& Table::down(int index)
 {
-	return nodes[nodes[index].down()];
+	int ret = nodes[index].down();
+	if (ret == Node::END) {
+		return nullNode;
+	}
+	
+	return nodes[ret];
+
 }
 	
 Node& Table::left(int index)
 {
-	return nodes[nodes[index].left()];
+	int ret = nodes[index].left();
+	if (ret == Node::END) {
+		return nullNode;
+	}
+	
+	return nodes[ret];
+
 }
 	
 Node& Table::right(int index)
 {
-	return nodes[nodes[index].right()];
+	int ret = nodes[index].right();
+	if (ret == Node::END) {
+		return nullNode;
+	}
+	
+	return nodes[ret];
+
 }
 
 Node& Table::getNode(int index)
