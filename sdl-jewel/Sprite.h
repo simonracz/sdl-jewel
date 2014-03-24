@@ -41,6 +41,16 @@ public:
 	bool setBlendMode(SDL_BlendMode blendMode = SDL_BLENDMODE_BLEND);
 	void setAlpha(Uint8 alpha = 255);
 	
+	void setPosition(int x, int y);
+	void setPosition(SDL_Point* point);
+	
+	void translate(int x, int y);
+	
+	SDL_Point getPosition();
+	int getPositionX();
+	int getPositionY();
+	
+	void draw();
 	void draw(int x, int y);
 	void draw(SDL_Rect* destination);
 	
@@ -51,6 +61,7 @@ private:
 	
 	SDL_Texture* texture{nullptr};
 	SDL_Rect texturePosition{};
+	SDL_Point spritePosition{};
 	int width{0};
 	int height{0};
 	bool fullTexture{true};

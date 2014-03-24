@@ -71,6 +71,49 @@ void Sprite::setAlpha(Uint8 alpha)
 	SDL_SetTextureAlphaMod(texture, alpha);
 }
 	
+void Sprite::setPosition(int x, int y)
+{
+	spritePosition.x = x;
+	spritePosition.y = y;
+}
+	
+void Sprite::setPosition(SDL_Point* point)
+{
+	spritePosition = *point;
+}
+
+void Sprite::translate(int x, int y)
+{
+	spritePosition.x+=x;
+	spritePosition.y+=y;
+}
+	
+SDL_Point Sprite::getPosition()
+{
+	return spritePosition;
+}
+	
+int Sprite::getPositionX()
+{
+	return spritePosition.x;
+}
+	
+int Sprite::getPositionY()
+{
+	return spritePosition.y;
+}
+
+void Sprite::draw()
+{
+	SDL_Rect dRect;
+	dRect.x = spritePosition.x;
+	dRect.y = spritePosition.y;
+	dRect.w = width;
+	dRect.h = height;
+	
+	draw(&dRect);
+}
+	
 void Sprite::draw(int x, int y)
 {
 	SDL_Rect dRect;
