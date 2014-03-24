@@ -12,6 +12,7 @@
 		F443314318DF9B0400C52CCB /* SDL2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F443314218DF9B0400C52CCB /* SDL2.framework */; };
 		F443314518DF9B2D00C52CCB /* SDL2_image.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F443314418DF9B2D00C52CCB /* SDL2_image.framework */; };
 		F443314918DF9F2400C52CCB /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F443314718DF9F2400C52CCB /* Application.cpp */; };
+		F443314C18E072CD00C52CCB /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F443314A18E072CD00C52CCB /* Sprite.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +35,8 @@
 		F443314418DF9B2D00C52CCB /* SDL2_image.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_image.framework; path = /Library/Frameworks/SDL2_image.framework; sourceTree = "<absolute>"; };
 		F443314718DF9F2400C52CCB /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Application.cpp; sourceTree = "<group>"; };
 		F443314818DF9F2400C52CCB /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
+		F443314A18E072CD00C52CCB /* Sprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Sprite.cpp; sourceTree = "<group>"; };
+		F443314B18E072CD00C52CCB /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +74,8 @@
 			isa = PBXGroup;
 			children = (
 				F443313718DF9A3C00C52CCB /* main.cpp */,
+				F443314A18E072CD00C52CCB /* Sprite.cpp */,
+				F443314B18E072CD00C52CCB /* Sprite.h */,
 				F443314718DF9F2400C52CCB /* Application.cpp */,
 				F443314818DF9F2400C52CCB /* Application.h */,
 			);
@@ -140,6 +145,7 @@
 			files = (
 				F443314918DF9F2400C52CCB /* Application.cpp in Sources */,
 				F443313818DF9A3C00C52CCB /* main.cpp in Sources */,
+				F443314C18E072CD00C52CCB /* Sprite.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
