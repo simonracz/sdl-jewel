@@ -16,6 +16,12 @@
 
 namespace jewel {
 
+/**
+ * This class acts as a controller.
+ * It's model is the Table class.
+ *
+ * In case of more scenes there would be a base Scene class and this class could be renamed to GameScene.
+ */
 class LevelScene {
 private:
 	Table table;

@@ -25,6 +25,9 @@ enum class Direction : char {
 	Right
 };
 
+/**
+ * This class represent the model. It is closely tied to the Node class.
+ */
 class Table {
 private:
 	std::vector<Node> nodes;

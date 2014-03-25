@@ -24,10 +24,12 @@ enum class NodeType : char {
 };
 
 /**
- * The current maximum table size is 15x15
- * Index 255 means there is no neighbor
- * This Node is very general. It supports complex levels, e.g. antigravity
- * A more general Node could store a state too, e.g. it could change it's neighbors based on it's actual state.
+ * The Node class is closely tied to the Table class.
+ *
+ * The current maximum table size is 15x15.
+ * Index 255 (Node::END) means there is no neighbor.
+ * This Node is more general than needed. It supports complex levels, e.g. antigravity, empty fields etc.
+ * An even more general Node could store a state too and switch it's neighbors and/or gravity based on it.
  */
 struct Node{
 public:
