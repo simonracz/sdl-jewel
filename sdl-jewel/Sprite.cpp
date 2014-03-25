@@ -38,8 +38,7 @@ Sprite::Sprite(SDL_Texture* texture, const SDL_Rect& texturePosition) : texture{
 
 Sprite::~Sprite()
 {
-	//review this
-	SDL_DestroyTexture(texture);
+	//empty
 }
 
 void Sprite::setTexture(SDL_Texture* texture)

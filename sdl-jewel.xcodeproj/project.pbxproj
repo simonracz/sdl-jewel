@@ -21,6 +21,11 @@
 		F48F5F0418E1189C008896C8 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5EF818E1189C008896C8 /* Node.cpp */; };
 		F48F5F0618E1189C008896C8 /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5EFB18E1189C008896C8 /* Sprite.cpp */; };
 		F48F5F0718E1189C008896C8 /* Table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5EFD18E1189C008896C8 /* Table.cpp */; };
+		F48F5F0A18E23305008896C8 /* SDL2_mixer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48F5F0818E23305008896C8 /* SDL2_mixer.framework */; };
+		F48F5F0B18E23305008896C8 /* SDL2_ttf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F48F5F0918E23305008896C8 /* SDL2_ttf.framework */; };
+		F48F5F0C18E2331D008896C8 /* SDL2_mixer.framework in Resources */ = {isa = PBXBuildFile; fileRef = F48F5F0818E23305008896C8 /* SDL2_mixer.framework */; };
+		F48F5F0D18E2331D008896C8 /* SDL2_ttf.framework in Resources */ = {isa = PBXBuildFile; fileRef = F48F5F0918E23305008896C8 /* SDL2_ttf.framework */; };
+		F48F5F1018E23377008896C8 /* AssetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F0E18E23377008896C8 /* AssetManager.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +48,10 @@
 		F48F5EFC18E1189C008896C8 /* Sprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sprite.h; sourceTree = "<group>"; };
 		F48F5EFD18E1189C008896C8 /* Table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Table.cpp; sourceTree = "<group>"; };
 		F48F5EFE18E1189C008896C8 /* Table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Table.h; sourceTree = "<group>"; };
+		F48F5F0818E23305008896C8 /* SDL2_mixer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_mixer.framework; path = ../../../../../Library/Frameworks/SDL2_mixer.framework; sourceTree = "<group>"; };
+		F48F5F0918E23305008896C8 /* SDL2_ttf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SDL2_ttf.framework; path = ../../../../../Library/Frameworks/SDL2_ttf.framework; sourceTree = "<group>"; };
+		F48F5F0E18E23377008896C8 /* AssetManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AssetManager.cpp; sourceTree = "<group>"; };
+		F48F5F0F18E23377008896C8 /* AssetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetManager.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F48F5F0A18E23305008896C8 /* SDL2_mixer.framework in Frameworks */,
+				F48F5F0B18E23305008896C8 /* SDL2_ttf.framework in Frameworks */,
 				F48F5EEA18E1158E008896C8 /* SDL2_image.framework in Frameworks */,
 				F48F5EEB18E1158E008896C8 /* SDL2.framework in Frameworks */,
 				F48F5EB518E11516008896C8 /* Cocoa.framework in Frameworks */,
@@ -79,6 +90,8 @@
 		F48F5EB318E11516008896C8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F48F5F0818E23305008896C8 /* SDL2_mixer.framework */,
+				F48F5F0918E23305008896C8 /* SDL2_ttf.framework */,
 				F48F5EE818E1158E008896C8 /* SDL2_image.framework */,
 				F48F5EE918E1158E008896C8 /* SDL2.framework */,
 				F48F5EB418E11516008896C8 /* Cocoa.framework */,
@@ -92,6 +105,8 @@
 				F48F5EF218E1189C008896C8 /* Assets */,
 				F48F5EF018E1189C008896C8 /* Application.cpp */,
 				F48F5EF118E1189C008896C8 /* Application.h */,
+				F48F5F0E18E23377008896C8 /* AssetManager.cpp */,
+				F48F5F0F18E23377008896C8 /* AssetManager.h */,
 				F48F5EF518E1189C008896C8 /* LevelScene.cpp */,
 				F48F5EF618E1189C008896C8 /* LevelScene.h */,
 				F48F5EF718E1189C008896C8 /* main.cpp */,
@@ -177,6 +192,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F48F5F0C18E2331D008896C8 /* SDL2_mixer.framework in Resources */,
+				F48F5F0D18E2331D008896C8 /* SDL2_ttf.framework in Resources */,
 				F48F5EEE18E11671008896C8 /* SDL2.framework in Resources */,
 				F48F5F0118E1189C008896C8 /* gems.png in Resources */,
 				F48F5EEF18E11675008896C8 /* SDL2_image.framework in Resources */,
@@ -192,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F48F5F1018E23377008896C8 /* AssetManager.cpp in Sources */,
 				F48F5F0718E1189C008896C8 /* Table.cpp in Sources */,
 				F48F5EFF18E1189C008896C8 /* Application.cpp in Sources */,
 				F48F5F0218E1189C008896C8 /* LevelScene.cpp in Sources */,
@@ -290,6 +308,8 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/Library/Frameworks/SDL2_image.framework/Headers,
 					/Library/Frameworks/SDL2.framework/Headers,
+					/Library/Frameworks/SDL2_ttf.framework/Headers,
+					/Library/Frameworks/SDL2_mixer.framework/Headers,
 				);
 				INFOPLIST_FILE = "sdl-jewel/sdl-jewel-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";
@@ -314,6 +334,8 @@
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					/Library/Frameworks/SDL2_image.framework/Headers,
 					/Library/Frameworks/SDL2.framework/Headers,
+					/Library/Frameworks/SDL2_ttf.framework/Headers,
+					/Library/Frameworks/SDL2_mixer.framework/Headers,
 				);
 				INFOPLIST_FILE = "sdl-jewel/sdl-jewel-Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "@loader_path/../Frameworks @executable_path/../Frameworks";

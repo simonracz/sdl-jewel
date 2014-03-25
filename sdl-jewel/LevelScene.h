@@ -12,6 +12,7 @@
 #include "Table.h"
 #include "Sprite.h"
 #include <vector>
+#include "AssetManager.h"
 
 namespace jewel {
 
@@ -20,6 +21,7 @@ private:
 	Table table;
 	Sprite* bg{nullptr};
 	SDL_Renderer* renderer;
+	AssetManager* assetManager;
 	
 	//demo
 	std::vector<Sprite*> gems;

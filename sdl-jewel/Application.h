@@ -28,13 +28,15 @@ public:
 	const int FRAMES_PER_SECOND = 30;
 	
 	bool init();
-	bool process();
-	
 	std::string initError();
 	
+	bool process();
 private:
 	void handleInputs();
 	void updateWorld(float delta);
+	
+	bool initSDL();
+	bool preInitFinished{false};
 };
 	
 } //namespace

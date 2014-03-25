@@ -18,15 +18,15 @@ int main( int argc, char* args[] )
 	Application app;
 
 	if (!app.init()) {
-		std::cout << app.initError() << std::endl;
+		std::cerr << app.initError();
 		return 1;
 	}
 	
 	while (app.process()) {
-		
+		//empty
 	}
     
-	std::cout << "Done" << std::endl;
+	std::cout << "Done\n";
     return 0;
 }
 

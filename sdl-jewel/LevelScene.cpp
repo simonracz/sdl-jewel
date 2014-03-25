@@ -13,13 +13,12 @@ namespace jewel {
 
 LevelScene::LevelScene(SDL_Renderer* renderer) : renderer{renderer}
 {
-	
+	assetManager = new AssetManager(renderer);
+	assetManager->loadAssets();
 	//create Sprites/entities based on the table
-	SDL_Texture* texture = IMG_LoadTexture(renderer, "bg.png");
-	bg = new Sprite(texture);
+	bg = new Sprite(assetManager->getTexture(0));
 	Sprite::setRenderer(renderer);
-	
-	SDL_Texture* gemTexture = IMG_LoadTexture(renderer, "gems.png");
+	SDL_Texture* gemTexture = assetManager->getTexture(1);
 	Sprite* sprite = nullptr;
 	int offsetX = 240;
 	int offsetY = 192;
@@ -58,6 +57,7 @@ LevelScene::LevelScene(SDL_Renderer* renderer) : renderer{renderer}
 LevelScene::~LevelScene()
 {
 	delete bg;
+	delete assetManager;
 }
 
 bool LevelScene::update(float delta)
