@@ -27,7 +27,6 @@ LevelScene::LevelScene(SDL_Renderer* renderer) : renderer{renderer}
 		switch(table.getNode(i).type) {
 			case NodeType::Blue:
 				sprite = new Sprite(gemTexture, SDL_Rect{0,0,40,40});
-				SDL_LogDebug(SDL_LOG_CATEGORY_APPLICATION, "at blue");
 				gems.push_back(sprite);
 				break;
 			case NodeType::Green:

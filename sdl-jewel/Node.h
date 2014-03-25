@@ -39,7 +39,7 @@ public:
 	inline Node(Uint8 index, NodeType type);
 	inline Node(Uint8 index, NodeType type, Uint8 up, Uint8 down, Uint8 left, Uint8 right);
 	
-	inline void setNeighbors(Uint8 up, Uint8 down, Uint8 left, Uint8 right);
+	void setNeighbors(Uint8 up, Uint8 down, Uint8 left, Uint8 right);
 	
 	inline int up();
 	inline int down();
@@ -59,19 +59,19 @@ public:
 //Node implementation
 int Node::up()
 {
-	return (neighbors & 0xFF);
+	return (neighbors & 0xFFU);
 }
 int Node::down()
 {
-	return ((neighbors>>4) & 0xFF);
+	return ((neighbors>>8) & 0xFFU);
 }
 int Node::left()
 {
-	return ((neighbors>>8) & 0xFF);
+	return ((neighbors>>16) & 0xFFU);
 }
 int Node::right()
 {
-	return ((neighbors>>12) & 0xFF);
+	return ((neighbors>>24) & 0xFFU);
 }
 int Node::getIndex()
 {
@@ -91,17 +91,6 @@ Node::Node(Uint8 index, NodeType type) : index(index), type(type)
 Node::Node(Uint8 index, NodeType type, Uint8 up, Uint8 down, Uint8 left, Uint8 right) : index(index), type(type)
 {
 	setNeighbors(up, down, left, right);
-}
-
-void Node::setNeighbors(Uint8 up, Uint8 down, Uint8 left, Uint8 right)
-{
-	neighbors = up;
-	Uint32 temp = down;
-	neighbors |= (temp << 4);
-	temp = left;
-	neighbors |= (temp << 8);
-	temp = right;
-	neighbors |= (temp << 12);
 }
 
 bool Node::operator==(const Node& theOther)

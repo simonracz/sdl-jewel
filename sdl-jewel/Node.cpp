@@ -11,5 +11,16 @@
 namespace jewel {
 	
 const int Node::END = 255;
+
+void Node::setNeighbors(Uint8 up, Uint8 down, Uint8 left, Uint8 right)
+{
+	neighbors = up;
+	Uint32 temp = down;
+	neighbors |= (temp << 8);
+	temp = left;
+	neighbors |= (temp << 16);
+	temp = right;
+	neighbors |= (temp << 24);
+}
 	
 }

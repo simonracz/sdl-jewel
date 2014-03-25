@@ -53,7 +53,7 @@ bool Application::process()
 	updateWorld(1.0);
 	SDL_Delay(1);
 	++wait;
-	if (wait>3000) return false;
+	if (wait>1000) return false;
 	return true;
 }
 	

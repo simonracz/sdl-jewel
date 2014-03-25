@@ -8,6 +8,7 @@
 
 #include "Table.h"
 #include <chrono>
+#include <iostream>
 
 namespace jewel {
 
@@ -23,7 +24,9 @@ Table::Table()
 
 	//build the 8x8 table
 	fillTable();
-		
+	width = 8;
+	height = 8;
+
 	std::set<NodeType> allowedColors{NodeType::Green, NodeType::Blue, NodeType::Purple, NodeType::Red, NodeType::Yellow};
 	
 	for (int i=63; i>=0; --i) {
@@ -51,7 +54,7 @@ Table::Table()
 void Table::fillTable()
 {
 	nodes = std::vector<Node>(64);
-	
+
 	for (int i=7; i>=0; --i) {
 		for (int j=7; j>=0; --j) {
 			int ind = i*8 + j;
@@ -84,6 +87,8 @@ void Table::filterColors(Node& node, std::set<NodeType>& allowedColors)
 	if ((neighbor.type != NodeType::None) && (right(neighbor.index)).type == neighbor.type) {
 		allowedColors.erase(neighbor.type);
 	}
+	
+		
 }
 	
 Node& Table::up(int index)
@@ -100,6 +105,8 @@ Node& Table::down(int index)
 {
 	int ret = nodes[index].down();
 	if (ret == Node::END) {
+		//std::cout << "returning nullNode at :" << index << "\n";
+		//SDL_LogDebug(SDL_LOG_CATEGORY_APPLICATION, "returning nullNode at index %d", index);
 		return nullNode;
 	}
 	
