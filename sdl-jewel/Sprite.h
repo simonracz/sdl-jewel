@@ -22,14 +22,14 @@ class Sprite {
 public:
 	Sprite();
 	Sprite(SDL_Texture* texture);
-	Sprite(SDL_Texture* texture, SDL_Rect* texturePosition);
+	Sprite(SDL_Texture* texture, const SDL_Rect& texturePosition);
 	
 	~Sprite();
 	
 	static void setRenderer(SDL_Renderer* renderer);
 	
 	void setTexture(SDL_Texture* texture);
-	void setTexture(SDL_Texture* texture, SDL_Rect* texturePosition);
+	void setTexture(SDL_Texture* texture, const SDL_Rect& texturePosition);
 	
 	/**
 	 * It can run only one Action at a time.
@@ -52,7 +52,7 @@ public:
 	
 	void draw();
 	void draw(int x, int y);
-	void draw(SDL_Rect* destination);
+	void draw(const SDL_Rect& destination);
 	
 	int getWidth() {return width;}
 	int getHeight() {return height;}

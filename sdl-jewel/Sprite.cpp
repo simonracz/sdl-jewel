@@ -29,7 +29,7 @@ Sprite::Sprite(SDL_Texture* texture) : texture{texture}
 	}
 }
 
-Sprite::Sprite(SDL_Texture* texture, SDL_Rect* texturePosition) : texture{texture}, texturePosition(*texturePosition), fullTexture{false}
+Sprite::Sprite(SDL_Texture* texture, const SDL_Rect& texturePosition) : texture{texture}, texturePosition(texturePosition), fullTexture{false}
 {
 	if (SDL_QueryTexture(texture, NULL, NULL, &width, &height)!=0) {
 		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Can't get texture width and height");
@@ -38,6 +38,7 @@ Sprite::Sprite(SDL_Texture* texture, SDL_Rect* texturePosition) : texture{textur
 
 Sprite::~Sprite()
 {
+	//review this
 	SDL_DestroyTexture(texture);
 }
 
@@ -50,10 +51,10 @@ void Sprite::setTexture(SDL_Texture* texture)
 	}
 }
 
-void Sprite::setTexture(SDL_Texture* texture, SDL_Rect* texturePosition)
+void Sprite::setTexture(SDL_Texture* texture, const SDL_Rect& texturePosition)
 {
 	this->texture = texture;
-	this->texturePosition = *texturePosition;
+	this->texturePosition = texturePosition;
 	fullTexture = false;
 	if (SDL_QueryTexture(texture, NULL, NULL, &width, &height)!=0) {
 		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Can't get texture width and height");
@@ -111,7 +112,7 @@ void Sprite::draw()
 	dRect.w = width;
 	dRect.h = height;
 	
-	draw(&dRect);
+	draw(dRect);
 }
 	
 void Sprite::draw(int x, int y)
@@ -122,17 +123,17 @@ void Sprite::draw(int x, int y)
 	dRect.w = width;
 	dRect.h = height;
 	
-	draw(&dRect);
+	draw(dRect);
 }
 
-void Sprite::draw(SDL_Rect* destination)
+void Sprite::draw(const SDL_Rect& destination)
 {
 	SDL_assert(Sprite::renderer != nullptr);
 
 	if (fullTexture) {
-		SDL_RenderCopy(renderer, texture, NULL, destination);
+		SDL_RenderCopy(renderer, texture, NULL, &destination);
 	} else {
-		SDL_RenderCopy(renderer, texture, &texturePosition, destination);
+		SDL_RenderCopy(renderer, texture, &texturePosition, &destination);
 	}
 }
 	

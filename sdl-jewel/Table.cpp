@@ -28,7 +28,7 @@ Table::Table()
 	
 	for (int i=63; i>=0; --i) {
 		std::set<NodeType> tmpSet = allowedColors;
-		Node node = nodes[i];
+		Node& node = nodes[i];
 		filterColors(node, tmpSet);
 		if (tmpSet.size() == 1) {
 			node.type = *tmpSet.begin();

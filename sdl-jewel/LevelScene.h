@@ -11,6 +11,7 @@
 
 #include "Table.h"
 #include "Sprite.h"
+#include <vector>
 
 namespace jewel {
 
@@ -19,6 +20,9 @@ private:
 	Table table;
 	Sprite* bg{nullptr};
 	SDL_Renderer* renderer;
+	
+	//demo
+	std::vector<Sprite*> gems;
 public:
 	LevelScene(SDL_Renderer* renderer);
 	
