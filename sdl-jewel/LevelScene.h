@@ -10,19 +10,21 @@
 #define __sdl_jewel__LevelScene__
 
 #include "Table.h"
+#include "Sprite.h"
 
 namespace jewel {
 
 class LevelScene {
 private:
 	Table table;
+	Sprite* bg{nullptr};
+	SDL_Renderer* renderer;
 public:
-	LevelScene();
+	LevelScene(SDL_Renderer* renderer);
 	
 	~LevelScene();
 	
-	
-	
+	bool update(float delta);
 };
 	
 } //namespace

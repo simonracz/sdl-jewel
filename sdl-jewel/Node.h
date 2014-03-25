@@ -9,6 +9,9 @@
 #ifndef __sdl_jewel__Node__
 #define __sdl_jewel__Node__
 
+#include "SDL2/SDL.h"
+#include <utility>
+
 namespace jewel {
 
 enum class NodeType : char {
@@ -32,9 +35,9 @@ public:
 	NodeType type{NodeType::None};
 	Uint8 index{0};
 	
-	Node();
-	Node(Uint8 index, NodeType type);
-	Node(Uint8 index, NodeType type, Uint8 up, Uint8 down, Uint8 left, Uint8 right);
+	inline Node();
+	inline Node(Uint8 index, NodeType type);
+	inline Node(Uint8 index, NodeType type, Uint8 up, Uint8 down, Uint8 left, Uint8 right);
 	
 	inline void setNeighbors(Uint8 up, Uint8 down, Uint8 left, Uint8 right);
 	
@@ -45,12 +48,12 @@ public:
 	
 	inline int getIndex();
 	
-	bool operator==(const Node& theOther);
-	bool operator!=(const Node& theOther);
+	inline bool operator==(const Node& theOther);
+	inline bool operator!=(const Node& theOther);
 	
-	void swap(Node& theOther);
+	inline void swap(Node& theOther);
 	
-	static const int END = 255;
+	static const int END;
 };
 
 //Node implementation

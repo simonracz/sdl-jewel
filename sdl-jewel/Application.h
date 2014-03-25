@@ -11,11 +11,14 @@
 
 #include <string>
 #include "SDL2/SDL.h"
+#include "LevelScene.h"
 
 namespace jewel {
 
 class Application {
-	SDL_Renderer* renderer;
+	SDL_Window* window{nullptr};
+	SDL_Renderer* renderer{nullptr};
+	LevelScene* scene{nullptr};
 	//Timer* timer;
 	//World* world;
 public:

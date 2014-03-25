@@ -64,7 +64,8 @@ void Table::fillTable()
 		}
 	}
 }
-	
+
+//To prevent an automatic gem crushing at startup.
 void Table::filterColors(Node& node, std::set<NodeType>& allowedColors)
 {
 	Node neighbor = up(node.index);

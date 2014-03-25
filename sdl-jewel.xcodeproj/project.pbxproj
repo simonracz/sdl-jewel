@@ -15,6 +15,7 @@
 		F443314C18E072CD00C52CCB /* Sprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F443314A18E072CD00C52CCB /* Sprite.cpp */; };
 		F443314F18E0AF3500C52CCB /* Table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F443314D18E0AF3500C52CCB /* Table.cpp */; };
 		F443315818E0EF3100C52CCB /* LevelScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F443315618E0EF3100C52CCB /* LevelScene.cpp */; };
+		F48F5EA718E10881008896C8 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5EA518E10881008896C8 /* Node.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +47,7 @@
 		F443315518E0EB9200C52CCB /* gems.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gems.png; sourceTree = "<group>"; };
 		F443315618E0EF3100C52CCB /* LevelScene.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LevelScene.cpp; sourceTree = "<group>"; };
 		F443315718E0EF3100C52CCB /* LevelScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelScene.h; sourceTree = "<group>"; };
+		F48F5EA518E10881008896C8 /* Node.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				F443313718DF9A3C00C52CCB /* main.cpp */,
 				F443314A18E072CD00C52CCB /* Sprite.cpp */,
 				F443314B18E072CD00C52CCB /* Sprite.h */,
+				F48F5EA518E10881008896C8 /* Node.cpp */,
 				F443315118E0E44600C52CCB /* Node.h */,
 				F443314D18E0AF3500C52CCB /* Table.cpp */,
 				F443314E18E0AF3500C52CCB /* Table.h */,
@@ -168,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F443314918DF9F2400C52CCB /* Application.cpp in Sources */,
+				F48F5EA718E10881008896C8 /* Node.cpp in Sources */,
 				F443313818DF9A3C00C52CCB /* main.cpp in Sources */,
 				F443314F18E0AF3500C52CCB /* Table.cpp in Sources */,
 				F443314C18E072CD00C52CCB /* Sprite.cpp in Sources */,
@@ -255,6 +259,12 @@
 					/Library/Frameworks,
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Library/Frameworks/SDL2.framework/Headers,
+					/Library/Frameworks/SDL2_image.framework/Headers,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -265,6 +275,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					/Library/Frameworks,
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					/Library/Frameworks/SDL2.framework/Headers,
+					/Library/Frameworks/SDL2_image.framework/Headers,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -289,6 +305,7 @@
 				F443313F18DF9A3C00C52CCB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
