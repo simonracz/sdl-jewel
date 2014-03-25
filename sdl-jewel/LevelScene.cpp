@@ -15,7 +15,7 @@ LevelScene::LevelScene(SDL_Renderer* renderer) : renderer{renderer}
 {
 	
 	//create Sprites/entities based on the table
-	SDL_Texture* texture = IMG_LoadTexture(renderer, "/Users/simon/Dev/_git/sdl-jewel/sdl-jewel/Assets/bg.png");
+	SDL_Texture* texture = IMG_LoadTexture(renderer, "bg.png");
 	bg = new Sprite(texture);
 	Sprite::setRenderer(renderer);
 }

@@ -23,7 +23,7 @@ bool Application::init()
 	
 	if (SDL_CreateWindowAndRenderer(1024, 1024, SDL_WINDOW_OPENGL, &window, &renderer)!=0) {
 		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Can't start window or renderer.");
-	}
+	}	
 	
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 	SDL_RenderSetLogicalSize(renderer, 1024, 1024);
