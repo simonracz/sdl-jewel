@@ -71,24 +71,22 @@ void Table::fillTable()
 //To prevent an automatic gem crushing at startup.
 void Table::filterColors(Node& node, std::set<NodeType>& allowedColors)
 {
-	Node neighbor = up(node.index);
-	if ((neighbor.type != NodeType::None) && (up(neighbor.index)).type == neighbor.type) {
+	Node neighbor = up(node);
+	if ((neighbor != nullNode) && (up(neighbor)).type == neighbor.type) {
 		allowedColors.erase(neighbor.type);
 	}
-	neighbor = down(node.index);
-	if ((neighbor.type != NodeType::None) && (down(neighbor.index)).type == neighbor.type) {
+	neighbor = down(node);
+	if ((neighbor != nullNode) && (down(neighbor)).type == neighbor.type) {
 		allowedColors.erase(neighbor.type);
 	}
-	neighbor = left(node.index);
-	if ((neighbor.type != NodeType::None) && (left(neighbor.index)).type == neighbor.type) {
+	neighbor = left(node);
+	if ((neighbor != nullNode) && (left(neighbor)).type == neighbor.type) {
 		allowedColors.erase(neighbor.type);
 	}
-	neighbor = right(node.index);
-	if ((neighbor.type != NodeType::None) && (right(neighbor.index)).type == neighbor.type) {
+	neighbor = right(node);
+	if ((neighbor != nullNode) && (right(neighbor)).type == neighbor.type) {
 		allowedColors.erase(neighbor.type);
 	}
-	
-		
 }
 	
 Node& Table::up(int index)
@@ -136,6 +134,24 @@ Node& Table::right(int index)
 
 }
 
+Node& Table::up(const Node& node)
+{
+	return up(node.index);
+}
+Node& Table::down(const Node& node)
+{
+	return down(node.index);
+}
+Node& Table::left(const Node& node)
+{
+	return left(node.index);
+}
+Node& Table::right(const Node& node)
+{
+	return right(node.index);
+}
+
+	
 Node& Table::getNode(int index)
 {
 	return nodes[index];

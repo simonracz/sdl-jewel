@@ -10,15 +10,23 @@
 #include "SDL2_image/SDL_image.h"
 
 namespace jewel {
+	
+const int LevelScene::TEXTURE_BG = 0;
+const int LevelScene::TEXTURE_GEMS = 1;
 
 LevelScene::LevelScene(SDL_Renderer* renderer) : renderer{renderer}
 {
 	assetManager = new AssetManager(renderer);
 	assetManager->loadAssets();
-	//create Sprites/entities based on the table
-	bg = new Sprite(assetManager->getTexture(0));
+	
+	createEntities();
+}
+	
+void LevelScene::createEntities()
+{
+	bg = new Sprite(assetManager->getTexture(TEXTURE_BG));
 	Sprite::setRenderer(renderer);
-	SDL_Texture* gemTexture = assetManager->getTexture(1);
+	SDL_Texture* gemTexture = assetManager->getTexture(TEXTURE_GEMS);
 	Sprite* sprite = nullptr;
 	int offsetX = 240;
 	int offsetY = 192;

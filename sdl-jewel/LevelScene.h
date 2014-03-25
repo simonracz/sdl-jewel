@@ -32,11 +32,16 @@ private:
 	//demo
 	std::vector<Sprite*> gems;
 public:
+	static const int TEXTURE_BG;
+	static const int TEXTURE_GEMS;
+	
 	LevelScene(SDL_Renderer* renderer);
 	
 	~LevelScene();
 	
 	bool update(float delta);
+private:
+	void createEntities();
 };
 	
 } //namespace

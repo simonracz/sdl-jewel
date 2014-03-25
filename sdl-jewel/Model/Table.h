@@ -47,6 +47,11 @@ public:
 	Node& left(int index);
 	Node& right(int index);
 	
+	Node& up(const Node& node);
+	Node& down(const Node& node);
+	Node& left(const Node& node);
+	Node& right(const Node& node);
+	
 	//This Node is used to fill in the possible gaps in the table.
 	//It makes sure that the indexes are correct.
 	static Node nullNode;
