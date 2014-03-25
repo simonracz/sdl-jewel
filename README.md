@@ -1,3 +1,4 @@
+![jewel screenshot](EarlyScreenshot.png)
 SDL-Jewel
 =========
 
