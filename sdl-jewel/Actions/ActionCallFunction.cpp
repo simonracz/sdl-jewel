@@ -7,6 +7,7 @@
 //
 
 #include "ActionCallFunction.h"
+#include <iostream>
 
 namespace jewel {
 
@@ -18,7 +19,7 @@ ActionCallFunction::ActionCallFunction(std::function<void(void*)> fnct, void* pa
 bool ActionCallFunction::process(float delta, Sprite* sprite)
 {
 	fnct(payload);
-	
+	std::cout << "payload delivered\n";
 	isFunctionCalled = true;
 	return false;
 }

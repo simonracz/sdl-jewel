@@ -8,20 +8,22 @@
 
 #include "InputHandler.h"
 #include <cmath>
+#include <iostream>
 
 namespace jewel {
 	
 const int InputHandler::offsetX = 240;
 const int InputHandler::offsetY = 192;
 	
-InputHandler::InputHandler(InputDelegate* delegate, Table* table) : delegate(delegate), table(table)
+InputHandler::InputHandler(InputDelegate* delegate) : delegate(delegate)
 {
 	//empty
 }
 
 void InputHandler::setProcessing(bool process)
 {
-	ignoreEvents = process;
+	std::cout << "InputHandler processing is : " << process << "\n";
+	ignoreEvents = !process;
 }
 	
 void InputHandler::newEvent(SDL_Event* e)

@@ -13,7 +13,6 @@
 #include "Sprite.h"
 #include <map>
 #include "AssetManager.h"
-#include "InputHandler.h"
 
 namespace artemis{
 	class Entity;
@@ -23,20 +22,17 @@ namespace artemis{
 namespace jewel {
 
 class LogicSystem;
-	
+class InputHandler;
+
 /**
  * This class acts as a controller.
  * It's model is the Table class.
  *
  * In case of more scenes there would be a base Scene class and this class would be renamed to GameScene.
  */
-class LevelScene : public InputDelegate {
+class LevelScene {
 private:
 	Table table;
-	//The first parameter is the table index.
-	//It is possible that there is no entity for a given valid index
-	//when the gems are falling, therefore this can't be a vector.
-	std::map<int, artemis::Entity*> entities;
 	Sprite* bg{nullptr};
 	Sprite* curtain{nullptr};
 	AssetManager* assetManager{nullptr};
@@ -44,7 +40,6 @@ private:
 	InputHandler* inputHandler{nullptr};
 	LogicSystem* logicSystem{nullptr};
 	SDL_Renderer* renderer;
-	bool hasSelection{false};
 public:
 	static const int TEXTURE_BG;
 	static const int TEXTURE_GEMS;
@@ -52,8 +47,7 @@ public:
 	LevelScene(SDL_Renderer* renderer);
 	
 	void newEvent(SDL_Event* event);
-	void nodeTouchedAt(int index) override;
-	void nodeSlidTo(int index, Direction direction) override;
+
 	
 	~LevelScene();
 	

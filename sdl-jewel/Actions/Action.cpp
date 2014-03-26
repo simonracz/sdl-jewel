@@ -67,6 +67,7 @@ void Action::removeFromSprite()
 void Action::setParentAction(Action* action){
 	parentAction = action;
 	setSprite(nullptr);
+	actionSystem->removeAction(this);
 }
 	
 Action* Action::wait(float delta)
@@ -94,7 +95,7 @@ Action* Action::callFunction(std::function<void(void*)> fnct, void* payload)
 	Action* action = new ActionCallFunction(fnct, payload);
 	return action;
 }
-Action* Action::sequence(std::queue<Action*>& actions)
+Action* Action::sequence(std::deque<Action*>* actions)
 {
 	Action* action = new ActionSequence(actions);
 	return action;

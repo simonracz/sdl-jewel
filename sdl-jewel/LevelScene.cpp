@@ -30,8 +30,9 @@ LevelScene::LevelScene(SDL_Renderer* renderer) : renderer{renderer}
 	createBgSprites();
 	
 	world = new World;
-	inputHandler = new InputHandler(this, &table);
-	logicSystem = new LogicSystem();
+	logicSystem = new LogicSystem(&table, bg);
+	inputHandler = new InputHandler(logicSystem);
+	logicSystem->setInputHandler(inputHandler);
 	world->addSystem(logicSystem);
 	world->addSystem(new RenderingSystem(renderer, bg, curtain));
 	world->addSystem(new ActionSystem);
@@ -62,7 +63,7 @@ void LevelScene::createEntities()
 		Entity& entity = world->createEntity();
 		entity.addComponent(new RenderingComponent(sprite, i));
 		entity.refresh();
-		entities[i] = &entity;
+		logicSystem->addEntity(i, &entity);
 	}
 }
 
@@ -93,30 +94,6 @@ SDL_Rect LevelScene::srcRectToNodeType(NodeType type)
 void LevelScene::newEvent(SDL_Event* event)
 {
 	inputHandler->newEvent(event);
-}
-	
-void LevelScene::nodeTouchedAt(int index)
-{
-	std::cout << "node touched at " << index << "\n";
-}
-
-void LevelScene::nodeSlidTo(int index, Direction direction)
-{
-	switch (direction) {
-		case Direction::Left:
-			std::cout << "node at index " << index << " slid to left\n";
-			break;
-		case Direction::Right:
-			std::cout << "node at index " << index << " slid to right\n";
-			break;
-		case Direction::Up:
-			std::cout << "node at index " << index << " slid to up\n";
-			break;
-		case Direction::Down:
-			std::cout << "node at index " << index << " slid to down\n";
-			break;
-	}
-
 }
 	
 LevelScene::~LevelScene()

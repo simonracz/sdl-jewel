@@ -23,14 +23,13 @@ public:
 class LogicSystem;
 
 class InputHandler {
-	Table* table;
 	InputDelegate* delegate;
 	bool ignoreEvents{false};
 	static const int offsetX;
 	static const int offsetY;
 	static const int moveTreshhold;
 public:
-	InputHandler(InputDelegate* delegate, Table* table);
+	InputHandler(InputDelegate* delegate);
 	
 	void setProcessing(bool process);
 	

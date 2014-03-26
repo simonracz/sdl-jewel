@@ -11,7 +11,7 @@
 
 #include <vector>
 #include <set>
-#include <queue>
+#include <deque>
 #include <functional>
 
 namespace jewel {
@@ -35,8 +35,8 @@ protected:
 	
 	Action();
 	
-	virtual void setParentAction(Action* action);
 public:
+	virtual void setParentAction(Action* action);
 	/**
 	 * Returns false if it's finished.
 	 *
@@ -68,7 +68,7 @@ public:
 	static Action* moveTo(float delta, int x, int y);
 	static Action* alphaTo(float delta, int alpha);
 	static Action* callFunction(std::function<void(void*)> fnct, void* payload);
-	static Action* sequence(std::queue<Action*>& actions);
+	static Action* sequence(std::deque<Action*>* actions);
 	//static Action* group(std::set<Action*>& actions);
 };
 

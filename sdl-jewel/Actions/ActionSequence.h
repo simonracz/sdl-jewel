@@ -10,20 +10,20 @@
 #define __sdl_jewel__ActionSequence__
 
 #include "Action.h"
-#include <queue>
 
 namespace jewel {
 
 class ActionSequence : public Action {
 private:
-	std::queue<Action*> actions;
+	std::deque<Action*>* actions;
 	float totalTime{0};
 	float maxTime;
 protected:
 	bool process(float delta, Sprite* sprite = nullptr) override;
 	bool isFinished() override;
 public:
-	ActionSequence(std::queue<Action*>& actions);
+	ActionSequence(std::deque<Action*>* actions);
+	~ActionSequence();
 	
 	float getMaxTime() override;
 };
