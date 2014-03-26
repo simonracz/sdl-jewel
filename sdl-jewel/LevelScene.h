@@ -20,7 +20,9 @@ namespace artemis{
 }
 
 namespace jewel {
-
+	
+class InputSystem;
+	
 /**
  * This class acts as a controller.
  * It's model is the Table class.
@@ -38,12 +40,15 @@ private:
 	Sprite* curtain{nullptr};
 	AssetManager* assetManager{nullptr};
 	artemis::World* world{nullptr};
+	InputSystem* inputSystem{nullptr};
 	SDL_Renderer* renderer;
 public:
 	static const int TEXTURE_BG;
 	static const int TEXTURE_GEMS;
 	
 	LevelScene(SDL_Renderer* renderer);
+	
+	void newEvent(SDL_Event* event);
 	
 	~LevelScene();
 	

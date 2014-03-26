@@ -9,6 +9,7 @@
 #include <iostream>
 #include "Application.h"
 #include "World.h"
+#include "SDL2_image/SDL_image.h"
 
 namespace jewel {
 
@@ -65,6 +66,11 @@ bool Application::initSDL()
 	
 	SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 	SDL_RenderSetLogicalSize(renderer, 1024, 1024);
+	
+	if ((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG) != IMG_INIT_PNG){
+		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Couldn't init the png loader.");
+		return false;
+	}
 	
 	return true;
 }
@@ -126,9 +132,15 @@ void Application::end()
 	
 bool Application::handleInputs()
 {
-	static int wait = 0;
-	++wait;
-	if (wait>300) return false;
+	SDL_Event e;
+	while (SDL_PollEvent(&e)){
+		if (e.type == SDL_QUIT) {
+			return false;
+		} else {
+			scene->newEvent(&e);
+		}
+	}
+	
 	return true;
 }
 

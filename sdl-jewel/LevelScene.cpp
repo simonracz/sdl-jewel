@@ -29,7 +29,8 @@ LevelScene::LevelScene(SDL_Renderer* renderer) : renderer{renderer}
 	createBgSprites();
 	
 	world = new World;
-	//world->addSystem(new InputSystem);
+	//inputSystem = new InputSystem();
+	//world->addSystem(inputSystem);
 	//world->addSystem(new LogicSystem);
 	world->addSystem(new RenderingSystem(renderer, bg, curtain));
 	world->addSystem(new ActionSystem);
@@ -86,6 +87,11 @@ SDL_Rect LevelScene::srcRectToNodeType(NodeType type)
 			return SDL_Rect{0,0,0,0};
 			break;
 	}
+}
+	
+void LevelScene::newEvent(SDL_Event* event)
+{
+	
 }
 	
 LevelScene::~LevelScene()
