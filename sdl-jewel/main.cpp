@@ -22,10 +22,12 @@ int main( int argc, char* args[] )
 		return 1;
 	}
 	
+	app.begin();
 	while (app.process()) {
 		//empty
 	}
-    
+    app.end();
+	
 	std::cout << "Done\n";
     return 0;
 }

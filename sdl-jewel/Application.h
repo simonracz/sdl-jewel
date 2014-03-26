@@ -10,6 +10,7 @@
 #define __sdl_jewel__Application__
 
 #include <string>
+#include <chrono>
 #include "SDL2/SDL.h"
 #include "LevelScene.h"
 
@@ -19,20 +20,25 @@ class Application {
 	SDL_Window* window{nullptr};
 	SDL_Renderer* renderer{nullptr};
 	LevelScene* scene{nullptr};
-	//Timer* timer;
+	std::chrono::steady_clock::time_point gameStartTime;
+	std::chrono::steady_clock::time_point frameStartTime;
+	std::chrono::steady_clock::time_point lastFrameStartTime;
+	double fps;
+	double delta;
 	//World* world;
 public:
 	Application();
 	~Application();
-	
-	const int FRAMES_PER_SECOND = 30;
-	
 	bool init();
 	std::string initError();
 	
+	static const int FRAMES_PER_SECOND;
+
+	void begin();
 	bool process();
+	void end();
 private:
-	void handleInputs();
+	bool handleInputs();
 	void updateWorld(float delta);
 	
 	bool initSDL();

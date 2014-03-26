@@ -6,11 +6,14 @@
 //  Copyright (c) 2014 Simon Racz. All rights reserved.
 //
 
+#include <iostream>
 #include "Application.h"
 
 namespace jewel {
 
-Application::Application()
+const int Application::FRAMES_PER_SECOND = 30;
+	
+Application::Application() : fps(1.0 / static_cast<double>(FRAMES_PER_SECOND))
 {
 	//empty
 }
@@ -44,7 +47,7 @@ bool Application::initSDL()
 		return false;
 	}
 	
-	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	
 	if (!renderer) {
 		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Couldn't create the renderer.");
@@ -82,20 +85,48 @@ Application::~Application()
 	}
 }
 	
+void Application::begin()
+{
+	lastFrameStartTime = std::chrono::steady_clock::now();
+	gameStartTime = std::chrono::steady_clock::now();
+}
+
 bool Application::process()
 {
-	static int wait = 0;
-	handleInputs();
-	updateWorld(1.0);
-	SDL_Delay(1);
-	++wait;
-	if (wait>1000) return false;
+	using namespace std::chrono;
+	
+	frameStartTime = std::chrono::steady_clock::now();
+	
+	if (!handleInputs()) {
+		return false;
+	}
+
+	updateWorld((duration_cast<duration<float>>(steady_clock::now() - lastFrameStartTime)).count());
+
+	delta = (duration_cast<duration<double>>(steady_clock::now() - frameStartTime)).count();
+	
+	if (delta < fps) {
+		SDL_Delay((fps - delta) * 1000);
+	}
+	
+	lastFrameStartTime = frameStartTime;
+	
 	return true;
 }
-	
-void Application::handleInputs()
+
+void Application::end()
 {
+	using namespace std::chrono;
 	
+	std::cout << "The game run for " << ((duration_cast<duration<double>>(steady_clock::now() - gameStartTime)).count()) << " seconds.\n";
+}
+	
+bool Application::handleInputs()
+{
+	static int wait = 0;
+	++wait;
+	if (wait>300) return false;
+	return true;
 }
 
 void Application::updateWorld(float delta)
