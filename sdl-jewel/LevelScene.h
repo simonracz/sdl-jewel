@@ -13,6 +13,7 @@
 #include "Sprite.h"
 #include <map>
 #include "AssetManager.h"
+#include "InputHandler.h"
 
 namespace artemis{
 	class Entity;
@@ -20,8 +21,8 @@ namespace artemis{
 }
 
 namespace jewel {
-	
-class InputSystem;
+
+class LogicSystem;
 	
 /**
  * This class acts as a controller.
@@ -29,7 +30,7 @@ class InputSystem;
  *
  * In case of more scenes there would be a base Scene class and this class would be renamed to GameScene.
  */
-class LevelScene {
+class LevelScene : public InputDelegate {
 private:
 	Table table;
 	//The first parameter is the table index.
@@ -40,8 +41,10 @@ private:
 	Sprite* curtain{nullptr};
 	AssetManager* assetManager{nullptr};
 	artemis::World* world{nullptr};
-	InputSystem* inputSystem{nullptr};
+	InputHandler* inputHandler{nullptr};
+	LogicSystem* logicSystem{nullptr};
 	SDL_Renderer* renderer;
+	bool hasSelection{false};
 public:
 	static const int TEXTURE_BG;
 	static const int TEXTURE_GEMS;
@@ -49,6 +52,8 @@ public:
 	LevelScene(SDL_Renderer* renderer);
 	
 	void newEvent(SDL_Event* event);
+	void nodeTouchedAt(int index) override;
+	void nodeSlidTo(int index, Direction direction) override;
 	
 	~LevelScene();
 	

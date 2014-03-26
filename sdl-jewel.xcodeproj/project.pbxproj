@@ -51,7 +51,7 @@
 		F48F5F6918E33C4B008896C8 /* ActionCallFunction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F6718E33C4B008896C8 /* ActionCallFunction.cpp */; };
 		F48F5F6C18E33E6D008896C8 /* ActionSequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F6A18E33E6D008896C8 /* ActionSequence.cpp */; };
 		F48F5F6F18E35141008896C8 /* LogicSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F6D18E35141008896C8 /* LogicSystem.cpp */; };
-		F48F5F7218E35150008896C8 /* InputSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F7018E35150008896C8 /* InputSystem.cpp */; };
+		F48F5F7B18E3693F008896C8 /* InputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F7918E3693F008896C8 /* InputHandler.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -131,8 +131,8 @@
 		F48F5F6B18E33E6D008896C8 /* ActionSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSequence.h; sourceTree = "<group>"; };
 		F48F5F6D18E35141008896C8 /* LogicSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LogicSystem.cpp; sourceTree = "<group>"; };
 		F48F5F6E18E35141008896C8 /* LogicSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicSystem.h; sourceTree = "<group>"; };
-		F48F5F7018E35150008896C8 /* InputSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputSystem.cpp; sourceTree = "<group>"; };
-		F48F5F7118E35150008896C8 /* InputSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputSystem.h; sourceTree = "<group>"; };
+		F48F5F7918E3693F008896C8 /* InputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputHandler.cpp; sourceTree = "<group>"; };
+		F48F5F7A18E3693F008896C8 /* InputHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputHandler.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,13 +189,15 @@
 				F48F5F4618E27986008896C8 /* Components */,
 				F48F5F4718E27986008896C8 /* Systems */,
 				F48F5F4E18E27FCD008896C8 /* Actions */,
+				F48F5EF718E1189C008896C8 /* main.cpp */,
 				F48F5EF018E1189C008896C8 /* Application.cpp */,
 				F48F5EF118E1189C008896C8 /* Application.h */,
-				F48F5F0E18E23377008896C8 /* AssetManager.cpp */,
-				F48F5F0F18E23377008896C8 /* AssetManager.h */,
 				F48F5EF518E1189C008896C8 /* LevelScene.cpp */,
 				F48F5EF618E1189C008896C8 /* LevelScene.h */,
-				F48F5EF718E1189C008896C8 /* main.cpp */,
+				F48F5F0E18E23377008896C8 /* AssetManager.cpp */,
+				F48F5F0F18E23377008896C8 /* AssetManager.h */,
+				F48F5F7918E3693F008896C8 /* InputHandler.cpp */,
+				F48F5F7A18E3693F008896C8 /* InputHandler.h */,
 				F48F5EFB18E1189C008896C8 /* Sprite.cpp */,
 				F48F5EFC18E1189C008896C8 /* Sprite.h */,
 				F48F5EBB18E11516008896C8 /* Supporting Files */,
@@ -282,8 +284,6 @@
 		F48F5F4718E27986008896C8 /* Systems */ = {
 			isa = PBXGroup;
 			children = (
-				F48F5F7018E35150008896C8 /* InputSystem.cpp */,
-				F48F5F7118E35150008896C8 /* InputSystem.h */,
 				F48F5F6D18E35141008896C8 /* LogicSystem.cpp */,
 				F48F5F6E18E35141008896C8 /* LogicSystem.h */,
 				F48F5F5218E2802D008896C8 /* RenderingSystem.cpp */,
@@ -407,13 +407,13 @@
 				F48F5F6F18E35141008896C8 /* LogicSystem.cpp in Sources */,
 				F48F5F3918E2695D008896C8 /* ComponentType.cpp in Sources */,
 				F48F5F3B18E2695D008896C8 /* DelayedEntityProcessingSystem.cpp in Sources */,
-				F48F5F7218E35150008896C8 /* InputSystem.cpp in Sources */,
 				F48F5F3E18E2695D008896C8 /* EntityManager.cpp in Sources */,
 				F48F5F4118E2695D008896C8 /* GroupManager.cpp in Sources */,
 				F48F5F5718E28E18008896C8 /* ActionSystem.cpp in Sources */,
 				F48F5F5D18E2F2A5008896C8 /* Action.cpp in Sources */,
 				F48F5F5418E2802D008896C8 /* RenderingSystem.cpp in Sources */,
 				F48F5F4418E2695D008896C8 /* TagManager.cpp in Sources */,
+				F48F5F7B18E3693F008896C8 /* InputHandler.cpp in Sources */,
 				F48F5F6018E32917008896C8 /* ActionMoveTo.cpp in Sources */,
 				F48F5F6618E33A9A008896C8 /* ActionAlphaTo.cpp in Sources */,
 				F48F5F6318E339A8008896C8 /* ActionWait.cpp in Sources */,
