@@ -2,9 +2,8 @@
 #include "Entity.h"
 #include "SystemManager.h"
 #include "EntityManager.h"
+#include "EntitySystem.h"
 #include "SystemBitManager.h"
-
-
 
 namespace artemis {
 

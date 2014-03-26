@@ -8,9 +8,12 @@
 
 #include <iostream>
 #include "Application.h"
+#include "World.h"
 
 namespace jewel {
 
+using namespace artemis;
+	
 const int Application::FRAMES_PER_SECOND = 30;
 	
 Application::Application() : fps(1.0 / static_cast<double>(FRAMES_PER_SECOND))
@@ -101,7 +104,7 @@ bool Application::process()
 		return false;
 	}
 
-	updateWorld((duration_cast<duration<float>>(steady_clock::now() - lastFrameStartTime)).count());
+	update((duration_cast<duration<float>>(steady_clock::now() - lastFrameStartTime)).count());
 
 	delta = (duration_cast<duration<double>>(steady_clock::now() - frameStartTime)).count();
 	
@@ -118,7 +121,7 @@ void Application::end()
 {
 	using namespace std::chrono;
 	
-	std::cout << "The game run for " << ((duration_cast<duration<double>>(high_resolution_clock::now() - gameStartTime)).count()) << " seconds.\n";
+	std::cout << "The game ran for " << ((duration_cast<duration<double>>(high_resolution_clock::now() - gameStartTime)).count()) << " seconds.\n";
 }
 	
 bool Application::handleInputs()
@@ -129,7 +132,7 @@ bool Application::handleInputs()
 	return true;
 }
 
-void Application::updateWorld(float delta)
+void Application::update(float delta)
 {
 	scene->update(delta);
 }

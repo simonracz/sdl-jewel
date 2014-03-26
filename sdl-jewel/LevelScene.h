@@ -11,8 +11,13 @@
 
 #include "Table.h"
 #include "Sprite.h"
-#include <vector>
+#include <map>
 #include "AssetManager.h"
+
+namespace artemis{
+	class Entity;
+	class World;
+}
 
 namespace jewel {
 
@@ -25,10 +30,15 @@ namespace jewel {
 class LevelScene {
 private:
 	Table table;
+	//The first parameter is the table index
+	//It is possible that there is no entity for a given valid index,
+	//when the gems are falling, therefore this can't be a vector
+	std::map<int, artemis::Entity*> entities;
 	Sprite* bg{nullptr};
+	Sprite* curtain{nullptr};
+	AssetManager* assetManager{nullptr};
+	artemis::World* world{nullptr};
 	SDL_Renderer* renderer;
-	AssetManager* assetManager;
-	
 	//demo
 	std::vector<Sprite*> gems;
 public:
@@ -39,9 +49,11 @@ public:
 	
 	~LevelScene();
 	
-	bool update(float delta);
+	void update(float delta);
 private:
+	SDL_Rect srcRectToNodeType(NodeType type);
 	void createEntities();
+	void createBgSprites();
 };
 	
 } //namespace

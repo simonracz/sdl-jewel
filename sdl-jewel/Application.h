@@ -25,7 +25,6 @@ class Application {
 	std::chrono::steady_clock::time_point lastFrameStartTime;
 	double fps;
 	double delta;
-	//World* world;
 public:
 	Application();
 	~Application();
@@ -39,7 +38,7 @@ public:
 	void end();
 private:
 	bool handleInputs();
-	void updateWorld(float delta);
+	void update(float delta);
 	
 	bool initSDL();
 	bool preInitFinished{false};
