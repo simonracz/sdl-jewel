@@ -26,6 +26,7 @@ class RenderingComponent : public artemis::Component {
 public:
 	Sprite* sprite;
 	int staticIndex;
+	bool selected{false};
 	Uint8 alpha{255};
 	
 	RenderingComponent(Sprite* sprite, int index);

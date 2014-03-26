@@ -11,6 +11,10 @@
 #include "ActionSystem.h"
 #include "ActionMoveBy.h"
 #include "ActionMoveTo.h"
+#include "ActionWait.h"
+#include "ActionAlphaTo.h"
+#include "ActionCallFunction.h"
+#include "ActionSequence.h"
 
 namespace jewel {
 	
@@ -67,7 +71,8 @@ void Action::setParentAction(Action* action){
 	
 Action* Action::wait(float delta)
 {
-	return nullptr;
+	Action* action = new ActionWait(delta);
+	return action;
 }
 Action* Action::moveBy(float delta, int x, int y)
 {
@@ -81,19 +86,18 @@ Action* Action::moveTo(float delta, int x, int y)
 }
 Action* Action::alphaTo(float delta, int alpha)
 {
-	return nullptr;
+	Action* action = new ActionAlphaTo(delta, alpha);
+	return action;
 }
 Action* Action::callFunction(std::function<void(void*)> fnct, void* payload)
 {
-	return nullptr;
+	Action* action = new ActionCallFunction(fnct, payload);
+	return action;
 }
-Action* Action::sequence(std::vector<Action*>& actions)
+Action* Action::sequence(std::queue<Action*>& actions)
 {
-	return nullptr;
-}
-Action* Action::group(std::set<Action*>& actions)
-{
-	return nullptr;
+	Action* action = new ActionSequence(actions);
+	return action;
 }
 	
 }

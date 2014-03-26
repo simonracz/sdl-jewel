@@ -12,8 +12,6 @@
 #include "Action.h"
 
 namespace jewel {
-	
-class Sprite;
 
 class ActionMoveTo : public Action {
 private:

@@ -1,39 +1,33 @@
 //
-//  ActionMoveBy.h
+//  ActionSequence.h
 //  sdl-jewel
 //
 //  Created by Simon Racz on 26/03/14.
 //  Copyright (c) 2014 Simon Racz. All rights reserved.
 //
 
-#ifndef __sdl_jewel__ActionMoveBy__
-#define __sdl_jewel__ActionMoveBy__
+#ifndef __sdl_jewel__ActionSequence__
+#define __sdl_jewel__ActionSequence__
 
 #include "Action.h"
+#include <queue>
 
 namespace jewel {
 
-class ActionMoveBy : public Action {
+class ActionSequence : public Action {
 private:
-	int origX;
-	int origY;
-	int targetX;
-	int targetY;
-	int x;
-	int y;
+	std::queue<Action*> actions;
 	float totalTime{0};
 	float maxTime;
 protected:
 	bool process(float delta, Sprite* sprite = nullptr) override;
 	bool isFinished() override;
 public:
-	ActionMoveBy(float delay, int x, int y);
-	
-	void setSprite(Sprite* sprite) override;
+	ActionSequence(std::queue<Action*>& actions);
 	
 	float getMaxTime() override;
 };
 	
 }
 
-#endif /* defined(__sdl_jewel__ActionMoveBy__) */
+#endif /* defined(__sdl_jewel__ActionSequence__) */

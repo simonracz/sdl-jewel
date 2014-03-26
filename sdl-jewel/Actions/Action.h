@@ -11,6 +11,7 @@
 
 #include <vector>
 #include <set>
+#include <queue>
 #include <functional>
 
 namespace jewel {
@@ -35,7 +36,7 @@ protected:
 	Action();
 	
 	virtual void setParentAction(Action* action);
-	
+public:
 	/**
 	 * Returns false if it's finished.
 	 *
@@ -48,8 +49,12 @@ protected:
 	 * Returns true if it's finished.
 	 */
 	virtual bool isFinished() = 0;
-public:
+	
 	virtual ~Action();
+	/**
+	 * This is not reliable, if there are underlying sequence or group Actions.
+	 * It is reliable after the Actions are finished.
+	 */
 	virtual float getMaxTime() = 0;
 	
 	inline bool operator<(const Action& theOther);
@@ -63,8 +68,8 @@ public:
 	static Action* moveTo(float delta, int x, int y);
 	static Action* alphaTo(float delta, int alpha);
 	static Action* callFunction(std::function<void(void*)> fnct, void* payload);
-	static Action* sequence(std::vector<Action*>& actions);
-	static Action* group(std::set<Action*>& actions);
+	static Action* sequence(std::queue<Action*>& actions);
+	//static Action* group(std::set<Action*>& actions);
 };
 
 bool Action::operator<(const Action& theOther)

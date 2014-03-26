@@ -32,9 +32,15 @@ void RenderingSystem::processEntity(artemis::Entity &e)
 {
 	auto component = rcMapper.get(e);
 	Sprite* sprite = component->sprite;
+	if (component->selected) {
+		SDL_SetTextureColorMod(sprite->getTexture(), 180, 120, 120);
+	}
 	SDL_SetTextureAlphaMod(sprite->getTexture(), sprite->getAlpha());
 	sprite->draw(SDL_Rect{sprite->getPosX(),sprite->getPosY(), 80, 80});
 	SDL_SetTextureAlphaMod(sprite->getTexture(), 255);
+	if (component->selected) {
+		SDL_SetTextureColorMod(sprite->getTexture(), 255, 255, 255);
+	}
 }
 	
 void RenderingSystem::end()
