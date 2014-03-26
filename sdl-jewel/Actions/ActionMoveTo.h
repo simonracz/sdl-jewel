@@ -17,17 +17,20 @@ class Sprite;
 
 class ActionMoveTo : public Action {
 private:
-	int targetX;
-	int targetY;
 	int origX;
 	int origY;
+	int targetX;
+	int targetY;
 	float totalTime{0};
 	float maxTime;
 protected:
-	ActionMoveTo(float delay, int x, int y);
-	
 	bool process(float delta, Sprite* sprite = nullptr) override;
 	bool isFinished() override;
+public:
+	ActionMoveTo(float delay, int x, int y);
+	
+	void setSprite(Sprite* sprite) override;
+	float getMaxTime() override;
 };
 	
 }

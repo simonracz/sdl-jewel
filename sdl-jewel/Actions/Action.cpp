@@ -39,11 +39,18 @@ Action::~Action()
 void Action::setSprite(Sprite* sprite)
 {
 	this->sprite = sprite;
+}
+	
+void Action::startAction()
+{
 	if (sprite) {
 		actionSystem->addAction(this);
-	} else {
-		actionSystem->removeAction(this);
 	}
+}
+
+void Action::pauseAction()
+{
+	actionSystem->removeAction(this);
 }
 
 void Action::removeFromSprite()
@@ -56,6 +63,37 @@ void Action::removeFromSprite()
 void Action::setParentAction(Action* action){
 	parentAction = action;
 	setSprite(nullptr);
+}
+	
+Action* Action::wait(float delta)
+{
+	return nullptr;
+}
+Action* Action::moveBy(float delta, int x, int y)
+{
+	Action* action = new ActionMoveBy(delta, x, y);
+	return action;
+}
+Action* Action::moveTo(float delta, int x, int y)
+{
+	Action* action = new ActionMoveTo(delta, x, y);
+	return action;
+}
+Action* Action::alphaTo(float delta, int alpha)
+{
+	return nullptr;
+}
+Action* Action::callFunction(std::function<void(void*)> fnct, void* payload)
+{
+	return nullptr;
+}
+Action* Action::sequence(std::vector<Action*>& actions)
+{
+	return nullptr;
+}
+Action* Action::group(std::set<Action*>& actions)
+{
+	return nullptr;
 }
 	
 }

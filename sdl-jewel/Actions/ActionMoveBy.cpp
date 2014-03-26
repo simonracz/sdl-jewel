@@ -11,13 +11,22 @@
 
 namespace jewel {
 
-ActionMoveBy::ActionMoveBy(float delay, int x, int y) : maxTime(delay)
+ActionMoveBy::ActionMoveBy(float delay, int x, int y) : x(x), y(y), maxTime(delay)
 {
-	origX = sprite->getPosX();
-	origY = sprite->getPosY();
+	//empty
+}
 	
-	targetX = origX + x;
-	targetY = origY + y;
+void ActionMoveBy::setSprite(Sprite* sprite)
+{
+	Action::setSprite(sprite);
+	
+	if (sprite) {
+		origX = sprite->getPosX();
+		origY = sprite->getPosY();
+		
+		targetX = origX + x;
+		targetY = origY + y;
+	}
 }
 
 bool ActionMoveBy::process(float delta, Sprite* sprite)
@@ -36,9 +45,14 @@ bool ActionMoveBy::process(float delta, Sprite* sprite)
 		s->setPosition(origX + (targetX-origX)*d, origY + (targetY-origY)*d);
 	}
 	
-	return (totalTime>=maxTime);
+	return (totalTime<maxTime);
 }
 
+float ActionMoveBy::getMaxTime()
+{
+	return maxTime;
+}
+	
 bool ActionMoveBy::isFinished()
 {
 	return (totalTime>=maxTime);

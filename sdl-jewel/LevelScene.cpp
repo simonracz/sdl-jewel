@@ -13,6 +13,7 @@
 #include "RenderingSystem.h"
 #include "ActionSystem.h"
 #include "RenderingComponent.h"
+#include "Action.h"
 
 namespace jewel {
 
@@ -29,6 +30,7 @@ LevelScene::LevelScene(SDL_Renderer* renderer) : renderer{renderer}
 	
 	world = new World;
 	//world->addSystem(new InputSystem);
+	//world->addSystem(new LogicSystem);
 	world->addSystem(new RenderingSystem(renderer, bg, curtain));
 	world->addSystem(new ActionSystem);
 	world->initialize();

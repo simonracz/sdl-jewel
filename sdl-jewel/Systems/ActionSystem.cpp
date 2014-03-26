@@ -58,6 +58,7 @@ void ActionSystem::processEntities(ImmutableBag<Entity*> & bag)
 			(*it)->removeFromSprite();
 			delete (*it);
 			it = actions.erase(it);
+			if (it == actions.end()) break;
 		}
 	}
 }

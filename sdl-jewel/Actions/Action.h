@@ -50,10 +50,13 @@ protected:
 	virtual bool isFinished() = 0;
 public:
 	virtual ~Action();
+	virtual float getMaxTime() = 0;
 	
 	inline bool operator<(const Action& theOther);
 	
-	void setSprite(Sprite* sprite);
+	virtual void setSprite(Sprite* sprite);
+	void startAction();
+	void pauseAction();
 	
 	static Action* wait(float delta);
 	static Action* moveBy(float delta, int x, int y);

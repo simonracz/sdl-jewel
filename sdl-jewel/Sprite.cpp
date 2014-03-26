@@ -145,6 +145,7 @@ void Sprite::runAction(Action* action)
 {
 	this->action = action;
 	action->setSprite(this);
+	action->startAction();
 }
 
 Action* Sprite::removeAction()
