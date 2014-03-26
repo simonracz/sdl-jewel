@@ -55,6 +55,7 @@ void LevelScene::createEntities()
 		Entity& entity = world->createEntity();
 		entity.addComponent(new RenderingComponent(sprite, i));
 		entity.refresh();
+		entities[i] = &entity;
 	}
 }
 
