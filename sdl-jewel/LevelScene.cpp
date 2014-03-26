@@ -11,6 +11,7 @@
 #include "World.h"
 #include "Entity.h"
 #include "RenderingSystem.h"
+#include "ActionSystem.h"
 #include "RenderingComponent.h"
 
 namespace jewel {
@@ -27,7 +28,9 @@ LevelScene::LevelScene(SDL_Renderer* renderer) : renderer{renderer}
 	createBgSprites();
 	
 	world = new World;
+	//world->addSystem(new InputSystem);
 	world->addSystem(new RenderingSystem(renderer, bg, curtain));
+	world->addSystem(new ActionSystem);
 	world->initialize();
 	
 	createEntities();

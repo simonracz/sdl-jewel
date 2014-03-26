@@ -7,6 +7,7 @@
 //
 
 #include "Sprite.h"
+#include "Action.h"
 
 namespace jewel {
 
@@ -38,7 +39,7 @@ Sprite::Sprite(SDL_Texture* texture, const SDL_Rect& texturePosition) : texture{
 
 Sprite::~Sprite()
 {
-	//empty
+	removeAndDeleteAction();
 }
 	
 SDL_Texture* Sprite::getTexture()
@@ -140,14 +141,29 @@ void Sprite::draw(const SDL_Rect& destination)
 	}
 }
 	
-bool Sprite::runAction(Action* action)
+void Sprite::runAction(Action* action)
 {
-	return true;
+	this->action = action;
+	action->setSprite(this);
 }
 
-void Sprite::removeActions()
+Action* Sprite::removeAction()
 {
+	Action* temp = action;
+	if (action) {
+		action->setSprite(nullptr);
+		action = nullptr;
+	}
+	return temp;
+}
 	
+void Sprite::removeAndDeleteAction()
+{
+	if (action) {
+		action->setSprite(nullptr);
+		delete action;
+		action = nullptr;
+	}
 }
 
 } //namespace

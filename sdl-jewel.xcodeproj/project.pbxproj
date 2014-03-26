@@ -41,9 +41,11 @@
 		F48F5F4418E2695D008896C8 /* TagManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F3418E2695D008896C8 /* TagManager.cpp */; };
 		F48F5F4518E2695D008896C8 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F3618E2695D008896C8 /* World.cpp */; };
 		F48F5F4A18E2799C008896C8 /* RenderingComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F4818E2799C008896C8 /* RenderingComponent.cpp */; };
-		F48F5F5118E27FD8008896C8 /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F4F18E27FD8008896C8 /* Action.cpp */; };
 		F48F5F5418E2802D008896C8 /* RenderingSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F5218E2802D008896C8 /* RenderingSystem.cpp */; };
 		F48F5F5718E28E18008896C8 /* ActionSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F5518E28E18008896C8 /* ActionSystem.cpp */; };
+		F48F5F5A18E29680008896C8 /* ActionMoveBy.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F5818E29680008896C8 /* ActionMoveBy.cpp */; };
+		F48F5F5D18E2F2A5008896C8 /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F5B18E2F2A5008896C8 /* Action.cpp */; };
+		F48F5F6018E32917008896C8 /* ActionMoveTo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F5E18E32917008896C8 /* ActionMoveTo.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,12 +105,16 @@
 		F48F5F3718E2695D008896C8 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
 		F48F5F4818E2799C008896C8 /* RenderingComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderingComponent.cpp; sourceTree = "<group>"; };
 		F48F5F4918E2799C008896C8 /* RenderingComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderingComponent.h; sourceTree = "<group>"; };
-		F48F5F4F18E27FD8008896C8 /* Action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Action.cpp; sourceTree = "<group>"; };
 		F48F5F5018E27FD8008896C8 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
 		F48F5F5218E2802D008896C8 /* RenderingSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderingSystem.cpp; sourceTree = "<group>"; };
 		F48F5F5318E2802D008896C8 /* RenderingSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderingSystem.h; sourceTree = "<group>"; };
 		F48F5F5518E28E18008896C8 /* ActionSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActionSystem.cpp; sourceTree = "<group>"; };
 		F48F5F5618E28E18008896C8 /* ActionSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionSystem.h; sourceTree = "<group>"; };
+		F48F5F5818E29680008896C8 /* ActionMoveBy.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActionMoveBy.cpp; sourceTree = "<group>"; };
+		F48F5F5918E29680008896C8 /* ActionMoveBy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionMoveBy.h; sourceTree = "<group>"; };
+		F48F5F5B18E2F2A5008896C8 /* Action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Action.cpp; sourceTree = "<group>"; };
+		F48F5F5E18E32917008896C8 /* ActionMoveTo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActionMoveTo.cpp; sourceTree = "<group>"; };
+		F48F5F5F18E32917008896C8 /* ActionMoveTo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionMoveTo.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -269,8 +275,12 @@
 		F48F5F4E18E27FCD008896C8 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
-				F48F5F4F18E27FD8008896C8 /* Action.cpp */,
+				F48F5F5B18E2F2A5008896C8 /* Action.cpp */,
 				F48F5F5018E27FD8008896C8 /* Action.h */,
+				F48F5F5E18E32917008896C8 /* ActionMoveTo.cpp */,
+				F48F5F5F18E32917008896C8 /* ActionMoveTo.h */,
+				F48F5F5818E29680008896C8 /* ActionMoveBy.cpp */,
+				F48F5F5918E29680008896C8 /* ActionMoveBy.h */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -346,7 +356,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F48F5F1018E23377008896C8 /* AssetManager.cpp in Sources */,
-				F48F5F5118E27FD8008896C8 /* Action.cpp in Sources */,
 				F48F5F4318E2695D008896C8 /* SystemManager.cpp in Sources */,
 				F48F5F3A18E2695D008896C8 /* ComponentTypeManager.cpp in Sources */,
 				F48F5F3818E2695D008896C8 /* Component.cpp in Sources */,
@@ -360,6 +369,7 @@
 				F48F5F3C18E2695D008896C8 /* DelayedEntitySystem.cpp in Sources */,
 				F48F5F4A18E2799C008896C8 /* RenderingComponent.cpp in Sources */,
 				F48F5F0618E1189C008896C8 /* Sprite.cpp in Sources */,
+				F48F5F5A18E29680008896C8 /* ActionMoveBy.cpp in Sources */,
 				F48F5F0318E1189C008896C8 /* main.cpp in Sources */,
 				F48F5F3D18E2695D008896C8 /* Entity.cpp in Sources */,
 				F48F5F3918E2695D008896C8 /* ComponentType.cpp in Sources */,
@@ -367,8 +377,10 @@
 				F48F5F3E18E2695D008896C8 /* EntityManager.cpp in Sources */,
 				F48F5F4118E2695D008896C8 /* GroupManager.cpp in Sources */,
 				F48F5F5718E28E18008896C8 /* ActionSystem.cpp in Sources */,
+				F48F5F5D18E2F2A5008896C8 /* Action.cpp in Sources */,
 				F48F5F5418E2802D008896C8 /* RenderingSystem.cpp in Sources */,
 				F48F5F4418E2695D008896C8 /* TagManager.cpp in Sources */,
+				F48F5F6018E32917008896C8 /* ActionMoveTo.cpp in Sources */,
 				F48F5F1718E2406B008896C8 /* Table.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

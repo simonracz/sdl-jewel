@@ -28,6 +28,7 @@ enum class NodeType : char {
  *
  * The current maximum table size is 15x15.
  * Index 255 (Node::END) means there is no neighbor.
+ *
  * This Node is more general than needed. It supports complex levels, e.g. antigravity, empty fields etc.
  * An even more general Node could store a state too and switch it's neighbors and/or gravity based on it.
  */
@@ -36,6 +37,7 @@ public:
 	Uint32 neighbors{0xFFFFFFFF};
 	NodeType type{NodeType::None};
 	Uint8 index{0};
+	Uint8 gravityUp{Node::END};
 	
 	inline Node();
 	inline Node(Uint8 index, NodeType type);
@@ -48,6 +50,8 @@ public:
 	inline int left();
 	inline int right();
 	
+	inline int gUp();
+	
 	inline int getIndex();
 	
 	inline bool operator==(const Node& theOther);
@@ -55,7 +59,7 @@ public:
 	
 	inline void swap(Node& theOther);
 	
-	static const int END;
+	static const Uint8 END;
 };
 
 //Node implementation
@@ -75,6 +79,12 @@ int Node::right()
 {
 	return ((neighbors>>24) & 0xFFU);
 }
+	
+int Node::gUp()
+{
+	return gravityUp;
+}
+	
 int Node::getIndex()
 {
 	return index;

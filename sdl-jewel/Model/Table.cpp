@@ -64,6 +64,7 @@ void Table::fillTable()
 									(j>0)?(ind-1):(Node::END),
 									(j<7)?(ind+1):(Node::END)
 									);
+			nodes[ind].gravityUp = (i>0)?(ind-8):(Node::END);
 		}
 	}
 }

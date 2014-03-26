@@ -10,7 +10,7 @@
 
 namespace jewel {
 	
-const int Node::END = 255;
+const Uint8 Node::END = 255;
 
 void Node::setNeighbors(Uint8 up, Uint8 down, Uint8 left, Uint8 right)
 {

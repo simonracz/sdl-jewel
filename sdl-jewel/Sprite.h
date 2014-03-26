@@ -36,8 +36,15 @@ public:
 	 * It can run only one Action at a time.
 	 * The Sprite object does NOT own the Action object.
 	 */
-	bool runAction(Action* action);
-	void removeActions();
+	void runAction(Action* action);
+	/**
+	 * Returned Action* can be reused. It is not deleted only removed.
+	 */
+	Action* removeAction();
+	/**
+	 * Removes and deletes the action.
+	 */
+	void removeAndDeleteAction();
 	
 	void setAlpha(Uint8 alpha = 255);
 	Uint8 getAlpha();
