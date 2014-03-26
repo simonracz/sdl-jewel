@@ -28,6 +28,7 @@ public:
 	
 	static void setRenderer(SDL_Renderer* renderer);
 	
+	SDL_Texture* getTexture();
 	void setTexture(SDL_Texture* texture);
 	void setTexture(SDL_Texture* texture, const SDL_Rect& texturePosition);
 	
@@ -38,8 +39,8 @@ public:
 	bool runAction(Action* action);
 	void removeActions();
 	
-	bool setBlendMode(SDL_BlendMode blendMode = SDL_BLENDMODE_BLEND);
 	void setAlpha(Uint8 alpha = 255);
+	Uint8 getAlpha();
 	
 	void setPosition(int x, int y);
 	void setPosition(SDL_Point* point);
@@ -66,6 +67,7 @@ private:
 	int height{0};
 	bool fullTexture{true};
 	Action* action{nullptr};
+	Uint8 alpha{255};
 };
 	
 } //namespace

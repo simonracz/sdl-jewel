@@ -40,6 +40,11 @@ Sprite::~Sprite()
 {
 	//empty
 }
+	
+SDL_Texture* Sprite::getTexture()
+{
+	return texture;
+}
 
 void Sprite::setTexture(SDL_Texture* texture)
 {
@@ -60,15 +65,14 @@ void Sprite::setTexture(SDL_Texture* texture, const SDL_Rect& texturePosition)
 	}
 }
 
-bool Sprite::setBlendMode(SDL_BlendMode blendMode)
+Uint8 Sprite::getAlpha()
 {
-	int ret = SDL_SetTextureBlendMode(texture, blendMode);
-	return (ret==0);
+	return alpha;
 }
 	
 void Sprite::setAlpha(Uint8 alpha)
 {
-	SDL_SetTextureAlphaMod(texture, alpha);
+	this->alpha = alpha;
 }
 	
 void Sprite::setPosition(int x, int y)
