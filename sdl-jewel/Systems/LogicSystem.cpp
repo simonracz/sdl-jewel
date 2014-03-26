@@ -81,17 +81,20 @@ void LogicSystem::startSwapping(int index1, int index2)
 	Sprite* sprite1 = entities[index1]->getComponent<RenderingComponent>()->sprite;
 	Sprite* sprite2 = entities[index2]->getComponent<RenderingComponent>()->sprite;
 	
-	int x1 =   80 * sgn(index1 - index2) * (std::abs(index1 - index2) % 8);
-	int x2 = - 80 * sgn(index1 - index2) * (std::abs(index1 - index2) % 8);
-	int y1 =   80 * sgn((index1 - index2)/8);
-	int y2 = - 80 * sgn((index1 - index2)/8);
+	int x1 = - 80 * sgn(index1 - index2) * (std::abs(index1 - index2) % 8);
+	int x2 =   80 * sgn(index1 - index2) * (std::abs(index1 - index2) % 8);
+	int y1 = - 80 * sgn((index1 - index2)/8);
+	int y2 =   80 * sgn((index1 - index2)/8);
 	
-	sprite1->runAction(Action::moveBy(1.0, x2, y2));
-	sprite2->runAction(Action::moveBy(1.0, x1, y1));
+	sprite1->runAction(Action::moveBy(1.0, x1, y1));
+	sprite2->runAction(Action::moveBy(1.0, x2, y2));
 	
 	std::deque<Action*>* d = new std::deque<Action*>();
 	d->push_back(Action::wait(1.0));
-	d->push_back(Action::callFunction(std::bind(&LogicSystem::cbResetInput, this, std::placeholders::_1), nullptr));
+	//d->push_back(Action::callFunction(std::bind(&LogicSystem::cbResetInput, this, std::placeholders::_1), nullptr));
+	d->push_back(Action::callFunction([&](void*){
+		inputHandler->setProcessing(true);
+	}, nullptr));
 	lSprite->runAction(Action::sequence(d));
 }
 
