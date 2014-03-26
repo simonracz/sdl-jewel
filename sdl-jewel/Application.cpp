@@ -88,14 +88,14 @@ Application::~Application()
 void Application::begin()
 {
 	lastFrameStartTime = std::chrono::steady_clock::now();
-	gameStartTime = std::chrono::steady_clock::now();
+	gameStartTime = std::chrono::high_resolution_clock::now();
 }
 
 bool Application::process()
 {
 	using namespace std::chrono;
 	
-	frameStartTime = std::chrono::steady_clock::now();
+	frameStartTime = steady_clock::now();
 	
 	if (!handleInputs()) {
 		return false;
@@ -118,7 +118,7 @@ void Application::end()
 {
 	using namespace std::chrono;
 	
-	std::cout << "The game run for " << ((duration_cast<duration<double>>(steady_clock::now() - gameStartTime)).count()) << " seconds.\n";
+	std::cout << "The game run for " << ((duration_cast<duration<double>>(high_resolution_clock::now() - gameStartTime)).count()) << " seconds.\n";
 }
 	
 bool Application::handleInputs()

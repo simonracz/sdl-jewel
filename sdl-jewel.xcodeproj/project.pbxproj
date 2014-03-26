@@ -26,6 +26,20 @@
 		F48F5F1018E23377008896C8 /* AssetManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F0E18E23377008896C8 /* AssetManager.cpp */; };
 		F48F5F1618E2406B008896C8 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F1218E2406B008896C8 /* Node.cpp */; };
 		F48F5F1718E2406B008896C8 /* Table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F1418E2406B008896C8 /* Table.cpp */; };
+		F48F5F3818E2695D008896C8 /* Component.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F1A18E2695D008896C8 /* Component.cpp */; };
+		F48F5F3918E2695D008896C8 /* ComponentType.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F1D18E2695D008896C8 /* ComponentType.cpp */; };
+		F48F5F3A18E2695D008896C8 /* ComponentTypeManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F1F18E2695D008896C8 /* ComponentTypeManager.cpp */; };
+		F48F5F3B18E2695D008896C8 /* DelayedEntityProcessingSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F2118E2695D008896C8 /* DelayedEntityProcessingSystem.cpp */; };
+		F48F5F3C18E2695D008896C8 /* DelayedEntitySystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F2318E2695D008896C8 /* DelayedEntitySystem.cpp */; };
+		F48F5F3D18E2695D008896C8 /* Entity.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F2518E2695D008896C8 /* Entity.cpp */; };
+		F48F5F3E18E2695D008896C8 /* EntityManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F2718E2695D008896C8 /* EntityManager.cpp */; };
+		F48F5F3F18E2695D008896C8 /* EntityProcessingSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F2918E2695D008896C8 /* EntityProcessingSystem.cpp */; };
+		F48F5F4018E2695D008896C8 /* EntitySystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F2B18E2695D008896C8 /* EntitySystem.cpp */; };
+		F48F5F4118E2695D008896C8 /* GroupManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F2D18E2695D008896C8 /* GroupManager.cpp */; };
+		F48F5F4218E2695D008896C8 /* SystemBitManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F3018E2695D008896C8 /* SystemBitManager.cpp */; };
+		F48F5F4318E2695D008896C8 /* SystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F3218E2695D008896C8 /* SystemManager.cpp */; };
+		F48F5F4418E2695D008896C8 /* TagManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F3418E2695D008896C8 /* TagManager.cpp */; };
+		F48F5F4518E2695D008896C8 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F3618E2695D008896C8 /* World.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +66,37 @@
 		F48F5F1318E2406B008896C8 /* Node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Node.h; sourceTree = "<group>"; };
 		F48F5F1418E2406B008896C8 /* Table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Table.cpp; sourceTree = "<group>"; };
 		F48F5F1518E2406B008896C8 /* Table.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Table.h; sourceTree = "<group>"; };
+		F48F5F1918E2695D008896C8 /* BitSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitSize.h; sourceTree = "<group>"; };
+		F48F5F1A18E2695D008896C8 /* Component.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Component.cpp; sourceTree = "<group>"; };
+		F48F5F1B18E2695D008896C8 /* Component.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Component.h; sourceTree = "<group>"; };
+		F48F5F1C18E2695D008896C8 /* ComponentMapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComponentMapper.h; sourceTree = "<group>"; };
+		F48F5F1D18E2695D008896C8 /* ComponentType.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComponentType.cpp; sourceTree = "<group>"; };
+		F48F5F1E18E2695D008896C8 /* ComponentType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComponentType.h; sourceTree = "<group>"; };
+		F48F5F1F18E2695D008896C8 /* ComponentTypeManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ComponentTypeManager.cpp; sourceTree = "<group>"; };
+		F48F5F2018E2695D008896C8 /* ComponentTypeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComponentTypeManager.h; sourceTree = "<group>"; };
+		F48F5F2118E2695D008896C8 /* DelayedEntityProcessingSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DelayedEntityProcessingSystem.cpp; sourceTree = "<group>"; };
+		F48F5F2218E2695D008896C8 /* DelayedEntityProcessingSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelayedEntityProcessingSystem.h; sourceTree = "<group>"; };
+		F48F5F2318E2695D008896C8 /* DelayedEntitySystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DelayedEntitySystem.cpp; sourceTree = "<group>"; };
+		F48F5F2418E2695D008896C8 /* DelayedEntitySystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelayedEntitySystem.h; sourceTree = "<group>"; };
+		F48F5F2518E2695D008896C8 /* Entity.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Entity.cpp; sourceTree = "<group>"; };
+		F48F5F2618E2695D008896C8 /* Entity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entity.h; sourceTree = "<group>"; };
+		F48F5F2718E2695D008896C8 /* EntityManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EntityManager.cpp; sourceTree = "<group>"; };
+		F48F5F2818E2695D008896C8 /* EntityManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityManager.h; sourceTree = "<group>"; };
+		F48F5F2918E2695D008896C8 /* EntityProcessingSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EntityProcessingSystem.cpp; sourceTree = "<group>"; };
+		F48F5F2A18E2695D008896C8 /* EntityProcessingSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntityProcessingSystem.h; sourceTree = "<group>"; };
+		F48F5F2B18E2695D008896C8 /* EntitySystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = EntitySystem.cpp; sourceTree = "<group>"; };
+		F48F5F2C18E2695D008896C8 /* EntitySystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntitySystem.h; sourceTree = "<group>"; };
+		F48F5F2D18E2695D008896C8 /* GroupManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GroupManager.cpp; sourceTree = "<group>"; };
+		F48F5F2E18E2695D008896C8 /* GroupManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GroupManager.h; sourceTree = "<group>"; };
+		F48F5F2F18E2695D008896C8 /* ImmutableBag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImmutableBag.h; sourceTree = "<group>"; };
+		F48F5F3018E2695D008896C8 /* SystemBitManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SystemBitManager.cpp; sourceTree = "<group>"; };
+		F48F5F3118E2695D008896C8 /* SystemBitManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemBitManager.h; sourceTree = "<group>"; };
+		F48F5F3218E2695D008896C8 /* SystemManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SystemManager.cpp; sourceTree = "<group>"; };
+		F48F5F3318E2695D008896C8 /* SystemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemManager.h; sourceTree = "<group>"; };
+		F48F5F3418E2695D008896C8 /* TagManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TagManager.cpp; sourceTree = "<group>"; };
+		F48F5F3518E2695D008896C8 /* TagManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagManager.h; sourceTree = "<group>"; };
+		F48F5F3618E2695D008896C8 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
+		F48F5F3718E2695D008896C8 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				F48F5EF218E1189C008896C8 /* Assets */,
+				F48F5F1818E2695D008896C8 /* artemis */,
 				F48F5F1118E2406B008896C8 /* Model */,
 				F48F5EF018E1189C008896C8 /* Application.cpp */,
 				F48F5EF118E1189C008896C8 /* Application.h */,
@@ -145,6 +191,44 @@
 				F48F5F1518E2406B008896C8 /* Table.h */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F48F5F1818E2695D008896C8 /* artemis */ = {
+			isa = PBXGroup;
+			children = (
+				F48F5F1918E2695D008896C8 /* BitSize.h */,
+				F48F5F1A18E2695D008896C8 /* Component.cpp */,
+				F48F5F1B18E2695D008896C8 /* Component.h */,
+				F48F5F1C18E2695D008896C8 /* ComponentMapper.h */,
+				F48F5F1D18E2695D008896C8 /* ComponentType.cpp */,
+				F48F5F1E18E2695D008896C8 /* ComponentType.h */,
+				F48F5F1F18E2695D008896C8 /* ComponentTypeManager.cpp */,
+				F48F5F2018E2695D008896C8 /* ComponentTypeManager.h */,
+				F48F5F2118E2695D008896C8 /* DelayedEntityProcessingSystem.cpp */,
+				F48F5F2218E2695D008896C8 /* DelayedEntityProcessingSystem.h */,
+				F48F5F2318E2695D008896C8 /* DelayedEntitySystem.cpp */,
+				F48F5F2418E2695D008896C8 /* DelayedEntitySystem.h */,
+				F48F5F2518E2695D008896C8 /* Entity.cpp */,
+				F48F5F2618E2695D008896C8 /* Entity.h */,
+				F48F5F2718E2695D008896C8 /* EntityManager.cpp */,
+				F48F5F2818E2695D008896C8 /* EntityManager.h */,
+				F48F5F2918E2695D008896C8 /* EntityProcessingSystem.cpp */,
+				F48F5F2A18E2695D008896C8 /* EntityProcessingSystem.h */,
+				F48F5F2B18E2695D008896C8 /* EntitySystem.cpp */,
+				F48F5F2C18E2695D008896C8 /* EntitySystem.h */,
+				F48F5F2D18E2695D008896C8 /* GroupManager.cpp */,
+				F48F5F2E18E2695D008896C8 /* GroupManager.h */,
+				F48F5F2F18E2695D008896C8 /* ImmutableBag.h */,
+				F48F5F3018E2695D008896C8 /* SystemBitManager.cpp */,
+				F48F5F3118E2695D008896C8 /* SystemBitManager.h */,
+				F48F5F3218E2695D008896C8 /* SystemManager.cpp */,
+				F48F5F3318E2695D008896C8 /* SystemManager.h */,
+				F48F5F3418E2695D008896C8 /* TagManager.cpp */,
+				F48F5F3518E2695D008896C8 /* TagManager.h */,
+				F48F5F3618E2695D008896C8 /* World.cpp */,
+				F48F5F3718E2695D008896C8 /* World.h */,
+			);
+			path = artemis;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,11 +302,25 @@
 			buildActionMask = 2147483647;
 			files = (
 				F48F5F1018E23377008896C8 /* AssetManager.cpp in Sources */,
+				F48F5F4318E2695D008896C8 /* SystemManager.cpp in Sources */,
+				F48F5F3A18E2695D008896C8 /* ComponentTypeManager.cpp in Sources */,
+				F48F5F3818E2695D008896C8 /* Component.cpp in Sources */,
+				F48F5F4018E2695D008896C8 /* EntitySystem.cpp in Sources */,
+				F48F5F4218E2695D008896C8 /* SystemBitManager.cpp in Sources */,
+				F48F5F3F18E2695D008896C8 /* EntityProcessingSystem.cpp in Sources */,
 				F48F5EFF18E1189C008896C8 /* Application.cpp in Sources */,
+				F48F5F4518E2695D008896C8 /* World.cpp in Sources */,
 				F48F5F0218E1189C008896C8 /* LevelScene.cpp in Sources */,
 				F48F5F1618E2406B008896C8 /* Node.cpp in Sources */,
+				F48F5F3C18E2695D008896C8 /* DelayedEntitySystem.cpp in Sources */,
 				F48F5F0618E1189C008896C8 /* Sprite.cpp in Sources */,
 				F48F5F0318E1189C008896C8 /* main.cpp in Sources */,
+				F48F5F3D18E2695D008896C8 /* Entity.cpp in Sources */,
+				F48F5F3918E2695D008896C8 /* ComponentType.cpp in Sources */,
+				F48F5F3B18E2695D008896C8 /* DelayedEntityProcessingSystem.cpp in Sources */,
+				F48F5F3E18E2695D008896C8 /* EntityManager.cpp in Sources */,
+				F48F5F4118E2695D008896C8 /* GroupManager.cpp in Sources */,
+				F48F5F4418E2695D008896C8 /* TagManager.cpp in Sources */,
 				F48F5F1718E2406B008896C8 /* Table.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

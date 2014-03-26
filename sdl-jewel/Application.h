@@ -20,7 +20,7 @@ class Application {
 	SDL_Window* window{nullptr};
 	SDL_Renderer* renderer{nullptr};
 	LevelScene* scene{nullptr};
-	std::chrono::steady_clock::time_point gameStartTime;
+	std::chrono::high_resolution_clock::time_point gameStartTime;
 	std::chrono::steady_clock::time_point frameStartTime;
 	std::chrono::steady_clock::time_point lastFrameStartTime;
 	double fps;
