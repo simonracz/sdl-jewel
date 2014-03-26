@@ -93,12 +93,12 @@ SDL_Point Sprite::getPosition()
 	return spritePosition;
 }
 	
-int Sprite::getPositionX()
+int Sprite::getPosX()
 {
 	return spritePosition.x;
 }
 	
-int Sprite::getPositionY()
+int Sprite::getPosY()
 {
 	return spritePosition.y;
 }

@@ -9,6 +9,9 @@
 #include "LevelScene.h"
 #include "SDL2_image/SDL_image.h"
 #include "World.h"
+#include "Entity.h"
+#include "RenderingSystem.h"
+#include "RenderingComponent.h"
 
 namespace jewel {
 
@@ -21,10 +24,12 @@ LevelScene::LevelScene(SDL_Renderer* renderer) : renderer{renderer}
 {
 	assetManager = new AssetManager(renderer);
 	assetManager->loadAssets();
+	createBgSprites();
 	
 	world = new World;
+	world->addSystem(new RenderingSystem(renderer, bg, curtain));
+	world->initialize();
 	
-	createBgSprites();
 	createEntities();
 }
 	
@@ -37,21 +42,19 @@ void LevelScene::createBgSprites()
 }
 	
 void LevelScene::createEntities()
-{	
+{
 	SDL_Texture* gemTexture = assetManager->getTexture(TEXTURE_GEMS);
 	Sprite* sprite = nullptr;
 	int offsetX = 240;
 	int offsetY = 192;
 	for (int i=63; i>=0; --i) {
-		if (table.getNode(i).type == NodeType::None)
-			sprite = nullptr;
-		else {
-			sprite = new Sprite(gemTexture, srcRectToNodeType(table.getNode(i).type));
-			gems.push_back(sprite);
-		}
+		sprite = new Sprite(gemTexture, srcRectToNodeType(table.getNode(i).type));
 		int indexX = i % 8;
 		int indexY = i/8;
-		if (sprite) sprite->setPosition(offsetX + indexX*80, offsetY + indexY*80);
+		sprite->setPosition(offsetX + indexX*80, offsetY + indexY*80);
+		Entity& entity = world->createEntity();
+		entity.addComponent(new RenderingComponent(sprite, i));
+		entity.refresh();
 	}
 }
 
@@ -87,18 +90,9 @@ LevelScene::~LevelScene()
 
 void LevelScene::update(float delta)
 {
-	/*
 	world->loopStart();
 	world->setDelta(delta);
 	world->process();
-*/
-	
-	SDL_RenderClear(renderer);
-	bg->draw();
-	for(auto sprite : gems) {
-		sprite->draw(SDL_Rect{sprite->getPositionX(),sprite->getPositionY(), 80, 80});
-	}
-	SDL_RenderPresent(renderer);	
 }
 
 } //namespace

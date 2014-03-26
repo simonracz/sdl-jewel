@@ -40,6 +40,10 @@
 		F48F5F4318E2695D008896C8 /* SystemManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F3218E2695D008896C8 /* SystemManager.cpp */; };
 		F48F5F4418E2695D008896C8 /* TagManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F3418E2695D008896C8 /* TagManager.cpp */; };
 		F48F5F4518E2695D008896C8 /* World.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F3618E2695D008896C8 /* World.cpp */; };
+		F48F5F4A18E2799C008896C8 /* RenderingComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F4818E2799C008896C8 /* RenderingComponent.cpp */; };
+		F48F5F4D18E27F23008896C8 /* ActionComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F4B18E27F23008896C8 /* ActionComponent.cpp */; };
+		F48F5F5118E27FD8008896C8 /* Action.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F4F18E27FD8008896C8 /* Action.cpp */; };
+		F48F5F5418E2802D008896C8 /* RenderingSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F5218E2802D008896C8 /* RenderingSystem.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +101,14 @@
 		F48F5F3518E2695D008896C8 /* TagManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagManager.h; sourceTree = "<group>"; };
 		F48F5F3618E2695D008896C8 /* World.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = World.cpp; sourceTree = "<group>"; };
 		F48F5F3718E2695D008896C8 /* World.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = World.h; sourceTree = "<group>"; };
+		F48F5F4818E2799C008896C8 /* RenderingComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderingComponent.cpp; sourceTree = "<group>"; };
+		F48F5F4918E2799C008896C8 /* RenderingComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderingComponent.h; sourceTree = "<group>"; };
+		F48F5F4B18E27F23008896C8 /* ActionComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ActionComponent.cpp; sourceTree = "<group>"; };
+		F48F5F4C18E27F23008896C8 /* ActionComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionComponent.h; sourceTree = "<group>"; };
+		F48F5F4F18E27FD8008896C8 /* Action.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Action.cpp; sourceTree = "<group>"; };
+		F48F5F5018E27FD8008896C8 /* Action.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Action.h; sourceTree = "<group>"; };
+		F48F5F5218E2802D008896C8 /* RenderingSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RenderingSystem.cpp; sourceTree = "<group>"; };
+		F48F5F5318E2802D008896C8 /* RenderingSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenderingSystem.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +162,9 @@
 				F48F5EF218E1189C008896C8 /* Assets */,
 				F48F5F1818E2695D008896C8 /* artemis */,
 				F48F5F1118E2406B008896C8 /* Model */,
+				F48F5F4618E27986008896C8 /* Components */,
+				F48F5F4718E27986008896C8 /* Systems */,
+				F48F5F4E18E27FCD008896C8 /* Actions */,
 				F48F5EF018E1189C008896C8 /* Application.cpp */,
 				F48F5EF118E1189C008896C8 /* Application.h */,
 				F48F5F0E18E23377008896C8 /* AssetManager.cpp */,
@@ -231,6 +246,35 @@
 			path = artemis;
 			sourceTree = "<group>";
 		};
+		F48F5F4618E27986008896C8 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F48F5F4818E2799C008896C8 /* RenderingComponent.cpp */,
+				F48F5F4918E2799C008896C8 /* RenderingComponent.h */,
+				F48F5F4B18E27F23008896C8 /* ActionComponent.cpp */,
+				F48F5F4C18E27F23008896C8 /* ActionComponent.h */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F48F5F4718E27986008896C8 /* Systems */ = {
+			isa = PBXGroup;
+			children = (
+				F48F5F5218E2802D008896C8 /* RenderingSystem.cpp */,
+				F48F5F5318E2802D008896C8 /* RenderingSystem.h */,
+			);
+			path = Systems;
+			sourceTree = "<group>";
+		};
+		F48F5F4E18E27FCD008896C8 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				F48F5F4F18E27FD8008896C8 /* Action.cpp */,
+				F48F5F5018E27FD8008896C8 /* Action.h */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -302,9 +346,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F48F5F1018E23377008896C8 /* AssetManager.cpp in Sources */,
+				F48F5F5118E27FD8008896C8 /* Action.cpp in Sources */,
 				F48F5F4318E2695D008896C8 /* SystemManager.cpp in Sources */,
 				F48F5F3A18E2695D008896C8 /* ComponentTypeManager.cpp in Sources */,
 				F48F5F3818E2695D008896C8 /* Component.cpp in Sources */,
+				F48F5F4D18E27F23008896C8 /* ActionComponent.cpp in Sources */,
 				F48F5F4018E2695D008896C8 /* EntitySystem.cpp in Sources */,
 				F48F5F4218E2695D008896C8 /* SystemBitManager.cpp in Sources */,
 				F48F5F3F18E2695D008896C8 /* EntityProcessingSystem.cpp in Sources */,
@@ -313,6 +359,7 @@
 				F48F5F0218E1189C008896C8 /* LevelScene.cpp in Sources */,
 				F48F5F1618E2406B008896C8 /* Node.cpp in Sources */,
 				F48F5F3C18E2695D008896C8 /* DelayedEntitySystem.cpp in Sources */,
+				F48F5F4A18E2799C008896C8 /* RenderingComponent.cpp in Sources */,
 				F48F5F0618E1189C008896C8 /* Sprite.cpp in Sources */,
 				F48F5F0318E1189C008896C8 /* main.cpp in Sources */,
 				F48F5F3D18E2695D008896C8 /* Entity.cpp in Sources */,
@@ -320,6 +367,7 @@
 				F48F5F3B18E2695D008896C8 /* DelayedEntityProcessingSystem.cpp in Sources */,
 				F48F5F3E18E2695D008896C8 /* EntityManager.cpp in Sources */,
 				F48F5F4118E2695D008896C8 /* GroupManager.cpp in Sources */,
+				F48F5F5418E2802D008896C8 /* RenderingSystem.cpp in Sources */,
 				F48F5F4418E2695D008896C8 /* TagManager.cpp in Sources */,
 				F48F5F1718E2406B008896C8 /* Table.cpp in Sources */,
 			);

@@ -47,8 +47,8 @@ public:
 	void translate(int x, int y);
 	
 	SDL_Point getPosition();
-	int getPositionX();
-	int getPositionY();
+	int getPosX();
+	int getPosY();
 	
 	void draw();
 	void draw(int x, int y);
