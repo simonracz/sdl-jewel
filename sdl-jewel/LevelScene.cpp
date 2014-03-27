@@ -31,7 +31,7 @@ LevelScene::LevelScene(SDL_Renderer* renderer) : renderer{renderer}
 	inputHandler = new InputHandler(logicSystem);
 	logicSystem->setInputHandler(inputHandler);
 	world->addSystem(logicSystem);
-	renderingSystem = new RenderingSystem(renderer, bg, curtain);
+	renderingSystem = new RenderingSystem(renderer, bg, curtain, assetManager->getFont());
 	renderingSystem->setTime(gameTime);
 	renderingSystem->setScore(gameScore);
 	world->addSystem(renderingSystem);

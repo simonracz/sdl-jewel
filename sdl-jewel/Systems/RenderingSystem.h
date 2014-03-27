@@ -12,6 +12,7 @@
 #include "EntityProcessingSystem.h"
 #include "ComponentMapper.h"
 #include "RenderingComponent.h"
+#include "SDL2_ttf/SDL_ttf.h"
 
 namespace jewel {
 
@@ -23,7 +24,7 @@ class Sprite;
  */
 class RenderingSystem : public artemis::EntityProcessingSystem {
 public:
-	RenderingSystem(SDL_Renderer* renderer, Sprite* bg, Sprite* curtain);
+	RenderingSystem(SDL_Renderer* renderer, Sprite* bg, Sprite* curtain, TTF_Font* font);
 	void initialize() override;
 	
 	void setScore(int score);
@@ -37,8 +38,13 @@ private:
 	Sprite* bg;
 	Sprite* curtain;
 	SDL_Renderer* renderer;
+	TTF_Font* font;
+	SDL_Color fontColor;
+	SDL_Rect destTimeRect;
+	SDL_Rect destScoreRect;
 	int score{0};
 	int time{60};
+	char buf[10];
 };
 
 	

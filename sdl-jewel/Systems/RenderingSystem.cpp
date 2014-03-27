@@ -12,9 +12,18 @@
 
 namespace jewel {
 	
-RenderingSystem::RenderingSystem(SDL_Renderer* renderer, Sprite* bg, Sprite* curtain) : renderer(renderer), bg(bg), curtain(curtain)
+RenderingSystem::RenderingSystem(SDL_Renderer* renderer, Sprite* bg, Sprite* curtain, TTF_Font* font) : renderer(renderer), bg(bg), curtain(curtain), font(font)
 {
 	setComponentTypes<RenderingComponent>();
+	fontColor.a = 255;
+	fontColor.r = 240;
+	fontColor.g = 200;
+	fontColor.b = 210;
+	
+	destScoreRect.x = 560;
+	destScoreRect.y = 96;
+	destScoreRect.w = 320;
+	destScoreRect.h = 96;	
 }
 
 void RenderingSystem::initialize()
@@ -22,20 +31,21 @@ void RenderingSystem::initialize()
 	rcMapper.init(*world);
 }
 	
-void RenderingSystem::begin()
-{
-	SDL_RenderClear(renderer);
-	bg->draw();
-}
 
 void RenderingSystem::setScore(int score)
 {
-	//std::cout << "game score : " << score << "\n";
+	this->score = score;
 }
 
 void RenderingSystem::setTime(int time)
 {
-	//std::cerr << "game time : " << time << "\n";
+	this->time = time;
+}
+	
+void RenderingSystem::begin()
+{
+	SDL_RenderClear(renderer);
+	bg->draw();
 }
 	
 void RenderingSystem::processEntity(artemis::Entity &e)
@@ -56,6 +66,12 @@ void RenderingSystem::processEntity(artemis::Entity &e)
 void RenderingSystem::end()
 {
 	curtain->draw(SDL_Rect{0,0,1024,192});
+	
+	sprintf(buf, "%4d", score);
+	SDL_Surface *surf = TTF_RenderText_Blended(font, buf, fontColor);
+	SDL_Texture *texture = SDL_CreateTextureFromSurface(renderer, surf);
+	SDL_FreeSurface(surf);
+	SDL_RenderCopy(renderer, texture, NULL, &destScoreRect);
 	SDL_RenderPresent(renderer);
 }
 	

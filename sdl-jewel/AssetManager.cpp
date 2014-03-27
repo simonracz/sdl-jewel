@@ -63,6 +63,11 @@ void AssetManager::releaseAssets()
 	}
 }
 
+TTF_Font* AssetManager::getFont()
+{
+	return font;
+}
+	
 SDL_Texture* AssetManager::getTexture(int id)
 {
 	return textures[id];
