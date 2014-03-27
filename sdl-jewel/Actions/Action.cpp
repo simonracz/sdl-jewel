@@ -94,7 +94,7 @@ Action* Action::callFunction(std::function<void(void*)> fnct, void* payload)
 	Action* action = new ActionCallFunction(fnct, payload);
 	return action;
 }
-Action* Action::sequence(std::deque<Action*>* actions)
+Action* Action::sequence(std::initializer_list<Action*> actions)
 {
 	Action* action = new ActionSequence(actions);
 	return action;

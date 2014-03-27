@@ -35,8 +35,6 @@ public:
 	void nodeSlidTo(int index, Direction direction) override;
 	
 	void addEntity(int index, artemis::Entity* entity);
-	
-	void cbResetInput(void* payload);
 protected:
 	bool checkProcessing() override;
 	

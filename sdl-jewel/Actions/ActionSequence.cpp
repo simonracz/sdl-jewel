@@ -11,29 +11,28 @@
 namespace jewel {
 
 	
-ActionSequence::ActionSequence(std::deque<Action*>* actions) : actions(actions)
+ActionSequence::ActionSequence(std::initializer_list<Action*> actions)
 {
-	for (auto action : *actions) {
-		action->setParentAction(this);		
+	for (auto it = actions.begin(); it!=actions.end();++it) {
+		(*it)->setParentAction(this);
+		(this->actions).push(*it);
 	}
 	maxTime = 0; //we will calculate this during processing
 }
 	
 ActionSequence::~ActionSequence()
 {
-	for (auto action : *actions) {
-		delete action;
+	while (!actions.empty()) {
+		delete actions.front();
+		actions.pop();
 	}
-	delete actions;
 }
 
 void ActionSequence::setSprite(Sprite* sprite)
 {
 	Action::setSprite(sprite);
-	
-	auto ac = actions->begin();
-	if (ac != actions->end()) {
-		(*ac)->setSprite(sprite);
+	if (!actions.empty()) {
+		actions.front()->setSprite(sprite);		
 	}
 }
 	
@@ -41,27 +40,27 @@ bool ActionSequence::process(float delta)
 {
 	totalTime+=delta;
 	
-	while ((delta>0) && (!actions->empty())) {
-		if (!(actions->front()->process(delta))) {
-			maxTime+=actions->front()->getMaxTime();
-			delete actions->front();
-			actions->pop_front();
+	while ((delta>0) && (!actions.empty())) {
+		if (!(actions.front()->process(delta))) {
+			maxTime+=actions.front()->getMaxTime();
+			delete actions.front();
+			actions.pop();
 			delta = totalTime - maxTime;
 						
-			if (!actions->empty()) {
-				actions->front()->setSprite(sprite);
+			if (!actions.empty()) {
+				actions.front()->setSprite(sprite);
 			}
 		} else {
 			delta = 0;
 		}
 	}
 	
-	return !(actions->empty());
+	return !(actions.empty());
 }
 	
 bool ActionSequence::isFinished()
 {
-	return actions->empty();
+	return actions.empty();
 }
 
 float ActionSequence::getMaxTime()

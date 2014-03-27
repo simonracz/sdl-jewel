@@ -11,7 +11,6 @@
 
 #include <vector>
 #include <set>
-#include <deque>
 #include <functional>
 
 namespace jewel {
@@ -68,7 +67,7 @@ public:
 	static Action* moveTo(float delta, int x, int y);
 	static Action* alphaTo(float delta, int alpha);
 	static Action* callFunction(std::function<void(void*)> fnct, void* payload);
-	static Action* sequence(std::deque<Action*>* actions);
+	static Action* sequence(std::initializer_list<Action*> actions);
 	//static Action* group(std::set<Action*>& actions);
 };
 

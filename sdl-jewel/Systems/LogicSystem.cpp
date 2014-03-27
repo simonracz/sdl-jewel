@@ -99,23 +99,12 @@ void LogicSystem::startSwapping(int index1, int index2)
 		
 		return;
 	}
-	
-	deque<Action*>* d1 = new deque<Action*>();
-	d1->push_back(Action::moveBy(0.2, x1, y1));
-	d1->push_back(Action::moveBy(0.2, x2, y2));
-	sprite1->runAction(Action::sequence(d1));
-	deque<Action*>* d2 = new deque<Action*>();
-	d2->push_back(Action::moveBy(0.2, x2, y2));
-	d2->push_back(Action::moveBy(0.2, x1, y1));
-	sprite2->runAction(Action::sequence(d2));
-	
-	deque<Action*>* d = new deque<Action*>();
-	d->push_back(Action::wait(0.4));
-	//d->push_back(Action::callFunction(bind(&LogicSystem::cbResetInput, this, placeholders::_1), nullptr));
-	d->push_back(Action::callFunction([=](void*){
+	sprite1->runAction(Action::sequence({Action::moveBy(0.2, x1, y1), Action::moveBy(0.2, x2, y2)}));
+	sprite2->runAction(Action::sequence({Action::moveBy(0.2, x2, y2), Action::moveBy(0.2, x1, y1)}));
+
+	lSprite->runAction(Action::sequence({Action::wait(0.4), Action::callFunction([=](void* payload){
 		inputHandler->setProcessing(true);
-	}, nullptr));
-	lSprite->runAction(Action::sequence(d));
+	}, nullptr)}));
 }
 	
 void LogicSystem::swapEntities(int index1, int index2)
@@ -123,11 +112,6 @@ void LogicSystem::swapEntities(int index1, int index2)
 	
 }
 
-void LogicSystem::cbResetInput(void* payload)
-{
-	inputHandler->setProcessing(true);
-}
-	
 void LogicSystem::addEntity(int index, artemis::Entity* entity)
 {
 	entities[index] = entity;
