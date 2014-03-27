@@ -96,8 +96,10 @@ Application::~Application()
 	
 void Application::begin()
 {
-	lastFrameStartTime = std::chrono::steady_clock::now();
 	gameStartTime = std::chrono::high_resolution_clock::now();
+	
+	lastFrameStartTime = std::chrono::steady_clock::now();
+	scene->begin();	
 }
 
 bool Application::process()

@@ -32,7 +32,6 @@ void ActionSequence::setSprite(Sprite* sprite)
 {
 	Action::setSprite(sprite);
 	if (!actions.empty()) {
-		std::cerr << "setSprite\n";
 		actions.front()->setSprite(sprite);
 	}
 }
@@ -49,7 +48,6 @@ bool ActionSequence::process(float delta)
 			delta = totalTime - maxTime;
 						
 			if (!actions.empty()) {
-				std::cerr << "setSprite in loop\n";
 				actions.front()->setSprite(sprite);
 			}
 		} else {

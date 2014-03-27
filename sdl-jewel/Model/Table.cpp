@@ -287,7 +287,6 @@ void Table::applyNextStep(std::set<int>& nodesFell, std::set<int>& newNodes, boo
 			nodesFell.insert(i);
 			newNodes.insert(i);
 			int rnd = distributions[3](m);
-			std::cerr << "rnd : " << rnd << "\n";
 			nodes[i].type = static_cast<NodeType>(rnd);
 		}
 	}

@@ -11,6 +11,7 @@
 
 #include "EntitySystem.h"
 #include "InputHandler.h"
+#include "ScoreDelegate.h"
 #include <map>
 
 namespace artemis {
@@ -26,7 +27,7 @@ class AssetManager;
 	
 class LogicSystem : public artemis::EntitySystem, public InputDelegate {
 public:
-	LogicSystem(Table* table, AssetManager* assetManager, Sprite* aLongLivedSprite);
+	LogicSystem(Table* table, AssetManager* assetManager, Sprite* aLongLivedSprite, ScoreDelegate* delegate);
 	~LogicSystem();
 	
 	void setProcessing(bool process);
@@ -48,6 +49,7 @@ private:
 	AssetManager* assetManager;
 	Table* table;
 	Sprite* lSprite;
+	ScoreDelegate* delegate;
 	bool toBeBoom{false};
 	bool afterBoom{false};
 	void boom();

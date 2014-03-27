@@ -13,6 +13,8 @@
 #include "Sprite.h"
 #include <map>
 #include "AssetManager.h"
+#include "ScoreDelegate.h"
+#include <chrono>
 
 namespace artemis{
 	class Entity;
@@ -23,14 +25,15 @@ namespace jewel {
 
 class LogicSystem;
 class InputHandler;
-
+class RenderingSystem;
+	
 /**
  * This class acts as a controller.
  * It's model is the Table class.
  *
  * In case of more scenes there would be a base Scene class and this class would be renamed to GameScene.
  */
-class LevelScene {
+class LevelScene : public ScoreDelegate {
 private:
 	Table table;
 	Sprite* bg{nullptr};
@@ -39,7 +42,11 @@ private:
 	artemis::World* world{nullptr};
 	InputHandler* inputHandler{nullptr};
 	LogicSystem* logicSystem{nullptr};
+	RenderingSystem* renderingSystem{nullptr};
 	SDL_Renderer* renderer;
+	std::chrono::high_resolution_clock::time_point gameStartTime;
+	int gameScore{0};
+	int gameTime{60};
 public:
 	LevelScene(SDL_Renderer* renderer);
 	
@@ -47,6 +54,9 @@ public:
 	
 	~LevelScene();
 	
+	void addScore(int score) override;
+	
+	void begin();
 	void update(float delta);
 private:
 	void createEntities();

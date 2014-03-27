@@ -27,6 +27,16 @@ void RenderingSystem::begin()
 	SDL_RenderClear(renderer);
 	bg->draw();
 }
+
+void RenderingSystem::setScore(int score)
+{
+	std::cout << "game score : " << score << "\n";
+}
+
+void RenderingSystem::setTime(int time)
+{
+	//std::cerr << "game time : " << time << "\n";
+}
 	
 void RenderingSystem::processEntity(artemis::Entity &e)
 {

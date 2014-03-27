@@ -18,7 +18,7 @@
 
 namespace jewel {
 
-LogicSystem::LogicSystem(Table* table, AssetManager* assetManager, Sprite* aLongLivedSprite) : table(table), assetManager(assetManager), lSprite(aLongLivedSprite)
+LogicSystem::LogicSystem(Table* table, AssetManager* assetManager, Sprite* aLongLivedSprite, ScoreDelegate* delegate) : table(table), assetManager(assetManager), lSprite(aLongLivedSprite), delegate(delegate)
 {
 	//empty
 }
@@ -35,7 +35,7 @@ LogicSystem::~LogicSystem()
 
 void LogicSystem::nodeTouchedAt(int index)
 {
-	std::cout << "node touched at " << index << "\n";
+	//std::cout << "node touched at " << index << "\n";
 	
 	if (hasSelection) {
 		if ((std::abs(selectedIndex1 - index) == 1) || (std::abs(selectedIndex1 - index) == 8)) {
@@ -112,8 +112,7 @@ template <typename T> int sgn(T val) {
 void LogicSystem::startSwapping(int ind1, int ind2)
 {
 	using namespace std;
-	
-	cout << "start swapping\n";
+		
 	Sprite* sprite1 = entities[ind1]->getComponent<RenderingComponent>()->sprite;
 	Sprite* sprite2 = entities[ind2]->getComponent<RenderingComponent>()->sprite;
 	
@@ -178,18 +177,24 @@ void LogicSystem::boom()
 	
 	set<int> results;
 	table->check(results);
-	std::cerr << "at boom() table->check results size : " << results.size() << "\n";
+	int size = static_cast<int>(results.size());
+	//std::cerr << "at boom() table->check results size : " << results.size() << "\n";
 	if (results.empty()) {
 		inputHandler->setProcessing(true);
 		return;
 	}
 	
 	for (auto ind : results) {
-		std::cerr << "call boom on index : " << ind << "\n";
 		entities[ind]->getComponent<RenderingComponent>()->sprite->runAction(Action::sequence({Action::alphaTo(0.2, 0), Action::callFunction([ind,this]{
 			removeEntity(ind);
 		})}));
-		lSprite->runAction(Action::sequence({Action::wait(0.21), Action::callFunction([this]{
+		lSprite->runAction(Action::sequence({
+			Action::wait(0.11),
+			Action::callFunction([this, size]{
+				delegate->addScore(size);
+			}),
+			Action::wait(0.1),
+			Action::callFunction([this]{
 			afterBoom = true;
 			setProcessing(true);
 		})}));
@@ -218,14 +223,14 @@ void LogicSystem::checkForEmptyFields()
 	set<int> newNodes;
 	table->applyNextStep(nodesToFall, newNodes, afterBoom);
 	afterBoom = false;
-	
+	/*
 	std::cerr << "nodesToFall size : " << nodesToFall.size() << " ,newNodes size : " << newNodes.size() << "\n";
 	for (auto it : nodesToFall) {
 		std::cerr << "nodesToFall elements : " << it << "\n";
 	}
 	for (auto it : newNodes) {
 		std::cerr << "newNodes : " << it << "\n";
-	}	
+	}*/
 	
 	createNewEntities(newNodes);
 	fellEntities(nodesToFall);

@@ -25,6 +25,9 @@ class RenderingSystem : public artemis::EntityProcessingSystem {
 public:
 	RenderingSystem(SDL_Renderer* renderer, Sprite* bg, Sprite* curtain);
 	void initialize() override;
+	
+	void setScore(int score);
+	void setTime(int time);
 protected:
 	void begin() override;
 	void processEntity(artemis::Entity &e) override;
@@ -34,6 +37,8 @@ private:
 	Sprite* bg;
 	Sprite* curtain;
 	SDL_Renderer* renderer;
+	int score{0};
+	int time{60};
 };
 
 	

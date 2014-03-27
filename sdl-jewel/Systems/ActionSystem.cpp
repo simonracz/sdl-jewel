@@ -59,7 +59,7 @@ bool ActionSystem::checkProcessing()
 void ActionSystem::begin()
 {
 	for (auto ac : toBeAdded) {
-		std::cerr << "Action " << ac->id << " added to ActionSystem\n";
+		//std::cerr << "Action " << ac->id << " added to ActionSystem\n";
 		actions.insert(ac);
 	}
 	
@@ -80,7 +80,7 @@ void ActionSystem::end()
 	for (auto ac : toBeDeleted) {
 		if (actions.count(ac)==0) continue;
 		
-		std::cerr << "Action " << ac->id << " removed from ActionSystem\n";
+		//std::cerr << "Action " << ac->id << " removed from ActionSystem\n";
 		ac->removeFromSprite();
 		delete ac;
 		actions.erase(ac);

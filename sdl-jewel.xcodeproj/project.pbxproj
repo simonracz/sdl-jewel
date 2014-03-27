@@ -133,6 +133,7 @@
 		F48F5F6E18E35141008896C8 /* LogicSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogicSystem.h; sourceTree = "<group>"; };
 		F48F5F7918E3693F008896C8 /* InputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputHandler.cpp; sourceTree = "<group>"; };
 		F48F5F7A18E3693F008896C8 /* InputHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputHandler.h; sourceTree = "<group>"; };
+		F48F5F7D18E42830008896C8 /* ScoreDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +195,7 @@
 				F48F5EF118E1189C008896C8 /* Application.h */,
 				F48F5EF518E1189C008896C8 /* LevelScene.cpp */,
 				F48F5EF618E1189C008896C8 /* LevelScene.h */,
+				F48F5F7D18E42830008896C8 /* ScoreDelegate.h */,
 				F48F5F0E18E23377008896C8 /* AssetManager.cpp */,
 				F48F5F0F18E23377008896C8 /* AssetManager.h */,
 				F48F5F7918E3693F008896C8 /* InputHandler.cpp */,

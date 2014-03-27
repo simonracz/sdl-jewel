@@ -145,7 +145,7 @@ void Sprite::draw(const SDL_Rect& destination)
 void Sprite::runAction(Action* action)
 {
 	if (this->action) {
-		std::cerr << "already had an action\n";
+		//std::cerr << "already had an action\n";
 	}
 		
 	this->action = action;
