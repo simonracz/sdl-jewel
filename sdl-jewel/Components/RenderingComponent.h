@@ -18,18 +18,15 @@ namespace jewel {
  * RenderingComponent
  *
  * The gem always bound to one and only one field, even when it visually seem to be between two fields.
- * This is represented by the staticIndex.
- *
  * The Sprite's inner position is used for rendering.
  */
 class RenderingComponent : public artemis::Component {
 public:
 	Sprite* sprite;
-	int staticIndex;
 	bool selected{false};
 	Uint8 alpha{255};
 	
-	RenderingComponent(Sprite* sprite, int index);
+	RenderingComponent(Sprite* sprite);
 };
 	
 } //namespace

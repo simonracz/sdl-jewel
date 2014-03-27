@@ -55,8 +55,10 @@ public:
 	Node& left(const Node& node);
 	Node& right(const Node& node);
 	
-	//This Node is used to fill in the possible gaps in the table.
-	//It makes sure that the indexes are correct.
+	/** 
+	 * This Node is used to fill in the possible gaps in the table.
+	 * It makes sure that the indexes are correct.
+	 */
 	static Node nullNode;
 	
 	Node& getNode(int index);
@@ -64,18 +66,37 @@ public:
 	int getWidth();
 	int getHeight();
 	
+	/**
+	 * Checks whether a swap would be succesful.
+	 */
 	bool checkSwap(int first, int second);
 	void swapElements(int first, int second);
 	
-	//Results returns pairs
-	//first element is a Node index
-	//second element is the direction
-	void check(std::set<std::pair<int,Direction>>& results);
-	void applyNextStep(std::set<int>& newNodes);
+	/**
+	 * Checks for neighboring gems.
+	 * Return their indexes in a set.
+	 *
+	 * Don't call this when there are empty fields.
+	 */
+	void check(std::set<int>& results);
+	/**
+	 * Makes one step.
+	 * Gems are removed and fell down exactly one level.
+	 */
+	void applyNextStep(std::set<int>& nodesFell, std::set<int>& newNodes);
+	/**
+	 * Checks for empty fields.
+	 */
+	bool hasEmpty();
 private:
 	//helper functions
 	void fillTable();
 	void filterColors(Node& node, std::set<NodeType>& allowedColors);
+	
+	/**
+	 * Collects the collisions for a given Node
+	 */
+	void checkNode(const Node& node, std::set<int>& results);
 };
 	
 } //namespace

@@ -187,11 +187,66 @@ bool Table::checkSwap(int first, int second)
 	//Smarter check
 	//check only the two indexes
 	swapElements(first, second);
-	std::set<std::pair<int,Direction>> results;
-	check(results);
+	std::set<int> results;
+	checkNode(getNode(first), results);
+	checkNode(getNode(second), results);
 	swapElements(first, second);
 	
 	return (results.size()!=0);
+}
+	
+void Table::checkNode(const Node& node, std::set<int>& results)
+{
+	NodeType type = node.type;
+	
+	Node neighbor = up(node);
+	if ((neighbor.type == type) && ((up(neighbor).type == type) || (down(node).type == type))) {
+		results.insert(node.index);
+		Node ne = node;
+		for (int dist = 1; dist<7; ++dist) {
+			ne = up(ne);
+			if (ne.type != type) {
+				break;
+			}
+			results.insert(ne.index);
+		}
+	}
+	neighbor = down(node);
+	if ((neighbor.type == type) && ((down(neighbor).type == type) || (up(node).type == type))) {
+		results.insert(node.index);
+		Node ne = node;
+		for (int dist = 1; dist<7; ++dist) {
+			ne = down(ne);
+			if (ne.type != type) {
+				break;
+			}
+			results.insert(ne.index);
+		}
+	}
+	neighbor = left(node);
+	if ((neighbor.type == type) && ((left(neighbor).type == type) || (right(node).type == type))) {
+		results.insert(node.index);
+		Node ne = node;
+		for (int dist = 1; dist<7; ++dist) {
+			ne = left(ne);
+			if (ne.type != type) {
+				break;
+			}
+			results.insert(ne.index);
+		}
+	}
+	neighbor = right(node);
+	if ((neighbor.type == type) && ((right(neighbor).type == type) || (left(node).type == type))) {
+		results.insert(node.index);
+		Node ne = node;
+		for (int dist = 1; dist<7; ++dist) {
+			ne = right(ne);
+			if (ne.type != type) {
+				break;
+			}
+			results.insert(ne.index);
+		}
+	}
 }
 	
 void Table::swapElements(int first, int second)
@@ -199,17 +254,53 @@ void Table::swapElements(int first, int second)
 	std::swap(nodes[first].type, nodes[second].type);
 }
 
-//Results returns pairs
-//first element is a Node index
-//second element is the direction
-void Table::check(std::set<std::pair<int,Direction>>& results)
+void Table::check(std::set<int>& results)
 {
-	
+	for (int i = 63; i>=0; --i) {
+		checkNode(getNode(i), results);
+	}
 }
 
-void Table::applyNextStep(std::set<int>& newNodes)
+void Table::applyNextStep(std::set<int>& nodesFell, std::set<int>& newNodes)
 {
+	std::set<int> results;
+	for (int i = 63; i>=0; --i) {
+		checkNode(getNode(i), results);
+	}
 	
+	for (auto i : results) {
+		getNode(i).type = NodeType::None;
+	}
+	
+	for (int i=7; i>=0; --i) {
+		bool found = false;
+		for (int j=7; j>=0; --j) {
+			if (found) {
+				swapElements(j*8+i, (j+1)*8 +i);
+				if (getNode((j+1)*8 + i).type != NodeType::None) {
+					nodesFell.insert((j+1)*8 +i);
+				}
+			}
+			if (getNode(j*8 + i).type == NodeType::None) {
+				found = true;
+			}
+		}
+		if (found) {
+			newNodes.insert(i);
+			getNode(i).type = static_cast<NodeType>(distributions[3](m));
+		}
+	}
+}
+	
+bool Table::hasEmpty()
+{
+	for (int i = 63; i>=0; --i) {
+		if (getNode(i).type == NodeType::None) {
+			return true;
+		}
+	}
+	
+	return false;
 }
 	
 } //namespace

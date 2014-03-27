@@ -82,7 +82,7 @@ int InputHandler::indexForEvent(SDL_Event* e)
 	return (y*8 + x);
 }
 	
-const int InputHandler::moveTreshhold = 10;
+const int InputHandler::moveTreshhold = 1;
 	
 bool InputHandler::directionForMouseEvent(SDL_Event* e, Direction* direction, int* index)
 {

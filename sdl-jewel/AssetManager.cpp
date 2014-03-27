@@ -11,6 +11,9 @@
 
 namespace jewel {
 
+const int AssetManager::TEXTURE_BG = 0;
+const int AssetManager::TEXTURE_GEMS = 1;
+	
 AssetManager::AssetManager(SDL_Renderer* renderer) : renderer(renderer)
 {
 	//empty

@@ -8,6 +8,7 @@
 
 #include "Sprite.h"
 #include "Action.h"
+#include <iostream>
 
 namespace jewel {
 
@@ -143,6 +144,10 @@ void Sprite::draw(const SDL_Rect& destination)
 	
 void Sprite::runAction(Action* action)
 {
+	if (this->action) {
+		std::cerr << "already had an action\n";
+	}
+		
 	this->action = action;
 	action->setSprite(this);
 	action->startAction();
@@ -162,6 +167,8 @@ void Sprite::removeAndDeleteAction()
 {
 	if (action) {
 		action->setSprite(nullptr);
+		//review
+		action->pauseAction();
 		delete action;
 		action = nullptr;
 	}

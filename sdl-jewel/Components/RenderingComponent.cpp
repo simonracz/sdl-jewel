@@ -10,7 +10,7 @@
 
 namespace jewel {
 
-RenderingComponent::RenderingComponent(Sprite* sprite, int index) : sprite(sprite), staticIndex(index)
+RenderingComponent::RenderingComponent(Sprite* sprite) : sprite(sprite)
 {
 	//empty
 }

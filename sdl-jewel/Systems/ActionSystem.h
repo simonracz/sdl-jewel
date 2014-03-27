@@ -39,7 +39,9 @@ protected:
 	void processEntities(artemis::ImmutableBag<artemis::Entity*> & bag) override;
 	void end() override;
 private:
+	std::set<Action*> toBeAdded;
 	std::set<Action*> actions;
+	std::set<Action*> toBeDeleted;
 };
 	
 } //namespace

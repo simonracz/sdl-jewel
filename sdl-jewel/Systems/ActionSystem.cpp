@@ -9,6 +9,7 @@
 #include "ActionSystem.h"
 #include "Action.h"
 #include "World.h"
+#include <iostream>
 
 namespace jewel {
 	
@@ -25,12 +26,14 @@ ActionSystem::~ActionSystem()
 }
 
 void ActionSystem::addAction(Action* action){
-	actions.insert(action);
+	std::cerr << "Action " << action->id << " will be added to the System\n";
+	toBeAdded.insert(action);
 }
 
 void ActionSystem::removeAction(Action* action)
 {
-	actions.erase(action);
+	std::cerr << "Action " << action->id << " will be removed from the System\n";
+	toBeDeleted.erase(action);
 }
 void ActionSystem::removeAllActions()
 {
@@ -48,24 +51,33 @@ bool ActionSystem::checkProcessing()
 
 void ActionSystem::begin()
 {
+	for (auto ac : toBeAdded) {
+		std::cerr << "Action " << ac->id << " will be removed from Sprite\n";
+		actions.insert(ac);
+	}
 	
+	toBeAdded.clear();
 }
 	
 void ActionSystem::processEntities(ImmutableBag<Entity*> & bag)
 {
 	for(std::set<Action*>::iterator it = actions.begin(); it!= actions.end(); ++it) {
 		if (!((*it)->process(world->getDelta()))) {
-			(*it)->removeFromSprite();
-			delete (*it);
-			it = actions.erase(it);
-			if (it == actions.end()) break;
+			toBeDeleted.insert((*it));
 		}
 	}
 }
 	
 void ActionSystem::end()
 {
+	for (auto ac : toBeDeleted) {
+		std::cerr << "Action " << ac->id << " will be removed from Sprite\n";
+		ac->removeFromSprite();
+		delete ac;
+		actions.erase(ac);
+	}
 	
+	toBeDeleted.clear();
 }
 	
 } //namespace

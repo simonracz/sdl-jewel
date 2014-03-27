@@ -22,10 +22,11 @@ namespace jewel {
 class Action;
 class Table;
 class Sprite;
+class AssetManager;
 	
 class LogicSystem : public artemis::EntitySystem, public InputDelegate {
 public:
-	LogicSystem(Table* table, Sprite* aLongLivedSprite);
+	LogicSystem(Table* table, AssetManager* assetManager, Sprite* aLongLivedSprite);
 	~LogicSystem();
 	
 	void setProcessing(bool process);
@@ -35,6 +36,7 @@ public:
 	void nodeSlidTo(int index, Direction direction) override;
 	
 	void addEntity(int index, artemis::Entity* entity);
+	static SDL_Rect srcRectToNodeType(NodeType type);
 protected:
 	bool checkProcessing() override;
 	
@@ -42,19 +44,34 @@ protected:
 	void processEntities(artemis::ImmutableBag<artemis::Entity*> & bag) override;
 	void end() override;
 private:
-	void startSwapping(int index1, int index2);
-	void swapEntities(int index1, int index2);
-
 	InputHandler* inputHandler{nullptr};
+	AssetManager* assetManager;
 	Table* table;
 	Sprite* lSprite;
+	std::set<int> toBeRemoved;
+	bool toBeBoom{false};
+	bool afterBoom{false};
+	void boom();
+	void removeEntity(int index);
+
 	//The first parameter is the table index.
 	//It is possible that there is no entity for a given valid index
 	//when the gems are falling, therefore this can't be a vector.
 	std::map<int, artemis::Entity*> entities;
+	
 	bool hasSelection{false};
-	int selectedIndex;
-	bool processing{true};
+	int selectedIndex1;
+	int selectedIndex2;
+		
+	void startSwapping(int index1, int index2);
+	void swapEntities(int index1, int index2);
+
+	void createNewEntities(const std::set<int>& newNodes);
+	void fellEntities(const std::set<int>& nodes);
+	
+	void checkForEmptyFields();
+	
+	bool processing{false};
 };
 	
 } //namespace

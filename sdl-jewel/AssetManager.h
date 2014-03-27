@@ -22,6 +22,9 @@ public:
 	AssetManager(SDL_Renderer* renderer);
 	~AssetManager();
 	
+	static const int TEXTURE_BG;
+	static const int TEXTURE_GEMS;
+	
 	bool loadAssets();
 	void releaseAssets();
 	bool isAssetsLoaded() {return assetsLoaded;}

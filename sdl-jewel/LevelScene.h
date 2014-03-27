@@ -41,19 +41,14 @@ private:
 	LogicSystem* logicSystem{nullptr};
 	SDL_Renderer* renderer;
 public:
-	static const int TEXTURE_BG;
-	static const int TEXTURE_GEMS;
-	
 	LevelScene(SDL_Renderer* renderer);
 	
 	void newEvent(SDL_Event* event);
-
 	
 	~LevelScene();
 	
 	void update(float delta);
 private:
-	SDL_Rect srcRectToNodeType(NodeType type);
 	void createEntities();
 	void createBgSprites();
 };

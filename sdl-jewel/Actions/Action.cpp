@@ -59,7 +59,7 @@ void Action::pauseAction()
 
 void Action::removeFromSprite()
 {
-	if (sprite) {
+	if (!parentAction && sprite) {
 		sprite->removeAction();
 	}
 }
