@@ -15,4 +15,12 @@ RenderingComponent::RenderingComponent(Sprite* sprite) : sprite(sprite)
 	//empty
 }
 
+RenderingComponent::~RenderingComponent()
+{
+	if (sprite) {
+		delete sprite;
+		sprite = nullptr;
+	}
+}
+	
 } //namespace

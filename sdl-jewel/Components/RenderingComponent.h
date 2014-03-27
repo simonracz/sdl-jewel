@@ -27,6 +27,7 @@ public:
 	Uint8 alpha{255};
 	
 	RenderingComponent(Sprite* sprite);
+	~RenderingComponent();
 };
 	
 } //namespace

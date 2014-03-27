@@ -40,7 +40,7 @@ Sprite::Sprite(SDL_Texture* texture, const SDL_Rect& texturePosition) : texture{
 
 Sprite::~Sprite()
 {
-	removeAndDeleteAction();
+	removeAction();
 }
 	
 SDL_Texture* Sprite::getTexture()

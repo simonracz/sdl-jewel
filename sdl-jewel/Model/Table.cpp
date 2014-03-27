@@ -183,9 +183,6 @@ int Table::getHeight()
 
 bool Table::checkSwap(int first, int second)
 {
-	//TODO
-	//Smarter check
-	//check only the two indexes
 	swapElements(first, second);
 	std::set<int> results;
 	checkNode(getNode(first), results);
@@ -280,8 +277,7 @@ void Table::applyNextStep(std::set<int>& nodesFell, std::set<int>& newNodes)
 				if (getNode((j+1)*8 + i).type != NodeType::None) {
 					nodesFell.insert((j+1)*8 +i);
 				}
-			}
-			if (getNode(j*8 + i).type == NodeType::None) {
+			} else if (getNode(j*8 + i).type == NodeType::None) {
 				found = true;
 			}
 		}

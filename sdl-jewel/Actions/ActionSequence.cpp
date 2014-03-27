@@ -44,7 +44,7 @@ bool ActionSequence::process(float delta)
 	while ((delta>0) && (!actions.empty())) {
 		if (!(actions.front()->process(delta))) {
 			maxTime+=actions.front()->getMaxTime();
-			delete actions.front();
+			delete (actions.front());
 			actions.pop();
 			delta = totalTime - maxTime;
 						

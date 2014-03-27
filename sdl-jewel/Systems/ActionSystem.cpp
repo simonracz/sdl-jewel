@@ -26,14 +26,21 @@ ActionSystem::~ActionSystem()
 }
 
 void ActionSystem::addAction(Action* action){
-	std::cerr << "Action " << action->id << " will be added to the System\n";
+	//std::cerr << "Action " << action->id << " will be added to the System\n";
+	if (toBeDeleted.count(action) != 0 ) {
+		toBeDeleted.erase(action);
+	}
 	toBeAdded.insert(action);
 }
 
 void ActionSystem::removeAction(Action* action)
 {
-	std::cerr << "Action " << action->id << " will be removed from the System\n";
-	toBeDeleted.erase(action);
+	//std::cerr << "Action " << action->id << " will be removed from the System\n";
+	if (toBeAdded.count(action) != 0) {
+		toBeAdded.erase(action);
+	} else {
+		toBeDeleted.insert(action);
+	}
 }
 void ActionSystem::removeAllActions()
 {
@@ -52,7 +59,7 @@ bool ActionSystem::checkProcessing()
 void ActionSystem::begin()
 {
 	for (auto ac : toBeAdded) {
-		std::cerr << "Action " << ac->id << " will be removed from Sprite\n";
+		std::cerr << "Action " << ac->id << " added to ActionSystem\n";
 		actions.insert(ac);
 	}
 	
@@ -62,8 +69,8 @@ void ActionSystem::begin()
 void ActionSystem::processEntities(ImmutableBag<Entity*> & bag)
 {
 	for(std::set<Action*>::iterator it = actions.begin(); it!= actions.end(); ++it) {
-		if (!((*it)->process(world->getDelta()))) {
-			toBeDeleted.insert((*it));
+		if ((toBeDeleted.count(*it)==0) && !((*it)->process(world->getDelta()))) {
+			toBeDeleted.insert(*it);
 		}
 	}
 }
@@ -71,7 +78,9 @@ void ActionSystem::processEntities(ImmutableBag<Entity*> & bag)
 void ActionSystem::end()
 {
 	for (auto ac : toBeDeleted) {
-		std::cerr << "Action " << ac->id << " will be removed from Sprite\n";
+		if (actions.count(ac)==0) continue;
+		
+		std::cerr << "Action " << ac->id << " removed from ActionSystem\n";
 		ac->removeFromSprite();
 		delete ac;
 		actions.erase(ac);

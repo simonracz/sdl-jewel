@@ -61,7 +61,7 @@ void LogicSystem::nodeSlidTo(int index, Direction direction)
 	}
 	switch (direction) {
 		case Direction::Left:
-			std::cout << "node at index " << index << " slid to left\n";
+			//std::cout << "node at index " << index << " slid to left\n";
 			if ((index % 8)!=0) {
 				inputHandler->setProcessing(false);
 				selectedIndex1 = index;
@@ -71,7 +71,7 @@ void LogicSystem::nodeSlidTo(int index, Direction direction)
 			}
 			break;
 		case Direction::Right:
-			std::cout << "node at index " << index << " slid to right\n";
+			//std::cout << "node at index " << index << " slid to right\n";
 			if ((index % 8)!=7) {
 				inputHandler->setProcessing(false);
 				selectedIndex1 = index;
@@ -81,7 +81,7 @@ void LogicSystem::nodeSlidTo(int index, Direction direction)
 			}
 			break;
 		case Direction::Up:
-			std::cout << "node at index " << index << " slid to up\n";
+			//std::cout << "node at index " << index << " slid to up\n";
 			if ((index / 8)!=0) {
 				inputHandler->setProcessing(false);
 				selectedIndex1 = index;
@@ -91,7 +91,7 @@ void LogicSystem::nodeSlidTo(int index, Direction direction)
 			}
 			break;
 		case Direction::Down:
-			std::cout << "node at index " << index << " slid to down\n";
+			//std::cout << "node at index " << index << " slid to down\n";
 			if ((index / 8)!=7) {
 				inputHandler->setProcessing(false);
 				selectedIndex1 = index;
@@ -177,6 +177,7 @@ void LogicSystem::boom()
 	
 	set<int> results;
 	table->check(results);
+	std::cerr << "at boom() table->check results size : " << results.size() << "\n";
 	if (results.empty()) {
 		inputHandler->setProcessing(true);
 		return;
@@ -186,6 +187,8 @@ void LogicSystem::boom()
 		std::cerr << "call boom on index : " << ind << "\n";
 		entities[ind]->getComponent<RenderingComponent>()->sprite->runAction(Action::sequence({Action::alphaTo(0.2, 0), Action::callFunction([ind,this]{
 			removeEntity(ind);
+		})}));
+		lSprite->runAction(Action::sequence({Action::wait(0.21), Action::callFunction([this]{
 			afterBoom = true;
 			setProcessing(true);
 		})}));
@@ -213,6 +216,8 @@ void LogicSystem::checkForEmptyFields()
 	set<int> newNodes;
 	table->applyNextStep(nodesToFall, newNodes);
 	
+	std::cerr << "nodesToFall size : " << nodesToFall.size() << " ,newNodes size : " << newNodes.size() << "\n";
+	
 	createNewEntities(newNodes);
 	fellEntities(nodesToFall);
 }
@@ -222,7 +227,7 @@ void LogicSystem::fellEntities(const std::set<int>& nodes)
 	for (auto it = nodes.rbegin(); it!=nodes.rend(); ++it) {
 		int i = (*it) - 8;
 		entities[i]->getComponent<RenderingComponent>()->sprite->runAction(Action::sequence({
-			Action::moveBy(0.2, 0, -80), Action::callFunction([this,i]{
+			Action::moveBy(0.2, 0, +80), Action::callFunction([this,i]{
 				swapEntities(i, i+8);
 				setProcessing(true);
 			})}));
@@ -245,7 +250,7 @@ void LogicSystem::createNewEntities(const std::set<int>& newNodes)
 		Entity& entity = world->createEntity();
 		entity.addComponent(new RenderingComponent(sprite));
 		entity.refresh();
-		addEntity((*it) -8, &entity);
+		addEntity((*it) - 8, &entity);
 	}
 }
 
@@ -296,16 +301,6 @@ void LogicSystem::processEntities(artemis::ImmutableBag<artemis::Entity*>& bag)
 {
 	using namespace artemis;
 	
-	if (!toBeRemoved.empty()) {
-		for (auto it = toBeRemoved.begin(); it != toBeRemoved.end(); ++it) {
-			Entity* entity = entities[*it];
-			delete entity->getComponent<RenderingComponent>()->sprite;
-			entity->remove();
-			entities.erase(*it);
-		}
-		toBeRemoved.clear();
-	}
-	
 	if (toBeBoom) {
 		toBeBoom = false;
 		boom();
@@ -319,6 +314,16 @@ void LogicSystem::processEntities(artemis::ImmutableBag<artemis::Entity*>& bag)
 	}
 	
 	checkForEmptyFields();
+	
+
+	if (!toBeRemoved.empty()) {
+		for (auto it = toBeRemoved.begin(); it != toBeRemoved.end(); ++it) {
+			Entity* entity = entities[*it];			
+			entity->remove();
+			entities.erase(*it);
+		}
+		toBeRemoved.clear();
+	}
 }
 void LogicSystem::end()
 {
