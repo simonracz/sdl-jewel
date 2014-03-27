@@ -83,7 +83,7 @@ public:
 	 * Makes one step.
 	 * Gems are removed and fell down exactly one level.
 	 */
-	void applyNextStep(std::set<int>& nodesFell, std::set<int>& newNodes);
+	void applyNextStep(std::set<int>& nodesFell, std::set<int>& newNodes, bool withDestroy);
 	/**
 	 * Checks for empty fields.
 	 */

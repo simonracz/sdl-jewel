@@ -48,7 +48,6 @@ private:
 	AssetManager* assetManager;
 	Table* table;
 	Sprite* lSprite;
-	std::set<int> toBeRemoved;
 	bool toBeBoom{false};
 	bool afterBoom{false};
 	void boom();

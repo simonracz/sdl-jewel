@@ -258,15 +258,17 @@ void Table::check(std::set<int>& results)
 	}
 }
 
-void Table::applyNextStep(std::set<int>& nodesFell, std::set<int>& newNodes)
+void Table::applyNextStep(std::set<int>& nodesFell, std::set<int>& newNodes, bool withDestroy)
 {
-	std::set<int> results;
-	for (int i = 63; i>=0; --i) {
-		checkNode(nodes[i], results);
-	}
-	
-	for (auto i : results) {
-		nodes[i].type = NodeType::None;
+	if (withDestroy) {
+		std::set<int> results;
+		for (int i = 63; i>=0; --i) {
+			checkNode(nodes[i], results);
+		}
+			
+		for (auto i : results) {
+			nodes[i].type = NodeType::None;
+		}
 	}
 	
 	for (int i=7; i>=0; --i) {
@@ -282,6 +284,7 @@ void Table::applyNextStep(std::set<int>& nodesFell, std::set<int>& newNodes)
 			}
 		}
 		if (found) {
+			nodesFell.insert(i);
 			newNodes.insert(i);
 			int rnd = distributions[3](m);
 			std::cerr << "rnd : " << rnd << "\n";

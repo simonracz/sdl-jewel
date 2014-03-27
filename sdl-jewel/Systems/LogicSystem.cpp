@@ -188,7 +188,6 @@ void LogicSystem::boom()
 		std::cerr << "call boom on index : " << ind << "\n";
 		entities[ind]->getComponent<RenderingComponent>()->sprite->runAction(Action::sequence({Action::alphaTo(0.2, 0), Action::callFunction([ind,this]{
 			removeEntity(ind);
-			//setProcessing(true);
 		})}));
 		lSprite->runAction(Action::sequence({Action::wait(0.21), Action::callFunction([this]{
 			afterBoom = true;
@@ -200,7 +199,9 @@ void LogicSystem::boom()
 	
 void LogicSystem::removeEntity(int index)
 {
-	toBeRemoved.insert(index);
+	artemis::Entity* entity = entities[index];
+	world->getEntityManager()->remove(*entity);
+	entities.erase(index);
 }
 
 void LogicSystem::checkForEmptyFields()
@@ -212,13 +213,19 @@ void LogicSystem::checkForEmptyFields()
 		return;
 	}
 
-	afterBoom = false;
 	
 	set<int> nodesToFall;
 	set<int> newNodes;
-	table->applyNextStep(nodesToFall, newNodes);
+	table->applyNextStep(nodesToFall, newNodes, afterBoom);
+	afterBoom = false;
 	
 	std::cerr << "nodesToFall size : " << nodesToFall.size() << " ,newNodes size : " << newNodes.size() << "\n";
+	for (auto it : nodesToFall) {
+		std::cerr << "nodesToFall elements : " << it << "\n";
+	}
+	for (auto it : newNodes) {
+		std::cerr << "newNodes : " << it << "\n";
+	}	
 	
 	createNewEntities(newNodes);
 	fellEntities(nodesToFall);
@@ -231,9 +238,12 @@ void LogicSystem::fellEntities(const std::set<int>& fNodes)
 		swapEntities(i, i+8);
 		entities[*it]->getComponent<RenderingComponent>()->sprite->runAction(Action::sequence({
 			Action::moveBy(0.2, 0, +80), Action::callFunction([this]{
-
 				setProcessing(true);
 			})}));
+	}
+	
+	for (int i = 0; i<8; ++i) {
+		entities.erase(i-8);
 	}
 }
 	
@@ -252,7 +262,7 @@ void LogicSystem::createNewEntities(const std::set<int>& newNodes)
 		sprite->setPosition(offsetX + indexX*80, offsetY + indexY*80 - 80);
 		Entity& entity = world->createEntity();
 		entity.addComponent(new RenderingComponent(sprite));
-		entity.refresh();
+		world->getEntityManager()->refresh(entity);
 		addEntity((*it) - 8, &entity);
 	}
 }
@@ -302,8 +312,6 @@ void LogicSystem::begin()
 }
 void LogicSystem::processEntities(artemis::ImmutableBag<artemis::Entity*>& bag)
 {
-	using namespace artemis;
-	
 	if (toBeBoom) {
 		toBeBoom = false;
 		boom();
@@ -317,16 +325,6 @@ void LogicSystem::processEntities(artemis::ImmutableBag<artemis::Entity*>& bag)
 	}
 	
 	checkForEmptyFields();
-	
-
-	if (!toBeRemoved.empty()) {
-		for (auto it = toBeRemoved.begin(); it != toBeRemoved.end(); ++it) {
-			Entity* entity = entities[*it];
-			world->getEntityManager()->remove(*entity);
-			entities.erase(*it);
-		}
-		toBeRemoved.clear();
-	}
 }
 void LogicSystem::end()
 {
