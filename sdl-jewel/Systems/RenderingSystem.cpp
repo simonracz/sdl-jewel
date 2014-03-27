@@ -30,7 +30,7 @@ void RenderingSystem::begin()
 
 void RenderingSystem::setScore(int score)
 {
-	std::cout << "game score : " << score << "\n";
+	//std::cout << "game score : " << score << "\n";
 }
 
 void RenderingSystem::setTime(int time)

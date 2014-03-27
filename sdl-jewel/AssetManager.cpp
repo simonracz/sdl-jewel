@@ -8,6 +8,7 @@
 
 #include "AssetManager.h"
 #include "SDL2_image/SDL_image.h"
+#include <iostream>
 
 namespace jewel {
 
@@ -41,6 +42,13 @@ bool AssetManager::loadAssets()
 	}
 	textures.push_back(texture);
 	
+	//Open the font
+    font = TTF_OpenFont("covertopsexpand.ttf", 28);
+    if (!font) {
+		std::cout << "Couldn't load font\n" << TTF_GetError();
+		return false;
+    }
+
 	assetsLoaded = true;
 	return true;
 }

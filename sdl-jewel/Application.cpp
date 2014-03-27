@@ -10,6 +10,7 @@
 #include "Application.h"
 #include "World.h"
 #include "SDL2_image/SDL_image.h"
+#include "SDL2_ttf/SDL_ttf.h"
 
 namespace jewel {
 
@@ -72,6 +73,12 @@ bool Application::initSDL()
 		return false;
 	}
 	
+	
+	if (TTF_Init() == -1) {
+		SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Couldn't init the ttf font loader.");
+		return false;
+	}
+	
 	return true;
 }
 	
@@ -92,6 +99,8 @@ Application::~Application()
 	if (preInitFinished) {
 		SDL_Quit();
 	}
+	
+	TTF_Quit();
 }
 	
 void Application::begin()

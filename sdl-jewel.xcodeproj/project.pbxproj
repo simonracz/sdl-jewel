@@ -52,6 +52,7 @@
 		F48F5F6C18E33E6D008896C8 /* ActionSequence.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F6A18E33E6D008896C8 /* ActionSequence.cpp */; };
 		F48F5F6F18E35141008896C8 /* LogicSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F6D18E35141008896C8 /* LogicSystem.cpp */; };
 		F48F5F7B18E3693F008896C8 /* InputHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F48F5F7918E3693F008896C8 /* InputHandler.cpp */; };
+		F48F5F8018E431C7008896C8 /* covertopsexpand.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F48F5F7F18E430E7008896C8 /* covertopsexpand.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -134,6 +135,7 @@
 		F48F5F7918E3693F008896C8 /* InputHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InputHandler.cpp; sourceTree = "<group>"; };
 		F48F5F7A18E3693F008896C8 /* InputHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputHandler.h; sourceTree = "<group>"; };
 		F48F5F7D18E42830008896C8 /* ScoreDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreDelegate.h; sourceTree = "<group>"; };
+		F48F5F7F18E430E7008896C8 /* covertopsexpand.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = covertopsexpand.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -221,6 +223,7 @@
 			children = (
 				F48F5EF318E1189C008896C8 /* bg.png */,
 				F48F5EF418E1189C008896C8 /* gems.png */,
+				F48F5F7F18E430E7008896C8 /* covertopsexpand.ttf */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F48F5F8018E431C7008896C8 /* covertopsexpand.ttf in Resources */,
 				F48F5F0C18E2331D008896C8 /* SDL2_mixer.framework in Resources */,
 				F48F5F0D18E2331D008896C8 /* SDL2_ttf.framework in Resources */,
 				F48F5EEE18E11671008896C8 /* SDL2.framework in Resources */,
