@@ -16,15 +16,14 @@ namespace jewel {
 
 class ActionCallFunction : public Action {
 private:
-	std::function<void(void*)> fnct;
-	void* payload;
+	std::function<void(void)> fnct;
 	bool isFunctionCalled{false};
 	float maxTime;
 protected:
 	bool process(float delta) override;
 	bool isFinished() override;
 public:
-	ActionCallFunction(std::function<void(void*)> fnct, void* payload);
+	ActionCallFunction(std::function<void(void)> fnct);
 
 	float getMaxTime() override;
 };

@@ -102,9 +102,9 @@ void LogicSystem::startSwapping(int index1, int index2)
 	sprite1->runAction(Action::sequence({Action::moveBy(0.2, x1, y1), Action::moveBy(0.2, x2, y2)}));
 	sprite2->runAction(Action::sequence({Action::moveBy(0.2, x2, y2), Action::moveBy(0.2, x1, y1)}));
 
-	lSprite->runAction(Action::sequence({Action::wait(0.4), Action::callFunction([=](void* payload){
+	lSprite->runAction(Action::sequence({Action::wait(0.4), Action::callFunction([=](){
 		inputHandler->setProcessing(true);
-	}, nullptr)}));
+	})}));
 }
 	
 void LogicSystem::swapEntities(int index1, int index2)

@@ -22,7 +22,6 @@ InputHandler::InputHandler(InputDelegate* delegate) : delegate(delegate)
 
 void InputHandler::setProcessing(bool process)
 {
-	std::cout << "InputHandler processing is : " << process << "\n";
 	ignoreEvents = !process;
 }
 	

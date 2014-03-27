@@ -32,7 +32,7 @@ void ActionSequence::setSprite(Sprite* sprite)
 {
 	Action::setSprite(sprite);
 	if (!actions.empty()) {
-		actions.front()->setSprite(sprite);		
+		actions.front()->setSprite(sprite);
 	}
 }
 	

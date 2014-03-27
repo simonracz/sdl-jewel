@@ -89,9 +89,9 @@ Action* Action::alphaTo(float delta, int alpha)
 	Action* action = new ActionAlphaTo(delta, alpha);
 	return action;
 }
-Action* Action::callFunction(std::function<void(void*)> fnct, void* payload)
+Action* Action::callFunction(std::function<void(void)> fnct)
 {
-	Action* action = new ActionCallFunction(fnct, payload);
+	Action* action = new ActionCallFunction(fnct);
 	return action;
 }
 Action* Action::sequence(std::initializer_list<Action*> actions)

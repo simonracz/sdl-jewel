@@ -11,15 +11,15 @@
 
 namespace jewel {
 
-ActionCallFunction::ActionCallFunction(std::function<void(void*)> fnct, void* payload) : fnct(fnct), payload(payload), maxTime(0.0)
+ActionCallFunction::ActionCallFunction(std::function<void(void)> fnct) : fnct(fnct), maxTime(0.0)
 {
 	//empty
 }
 	
 bool ActionCallFunction::process(float delta)
 {
-	fnct(payload);
-	std::cout << "payload delivered\n";
+	fnct();
+
 	isFunctionCalled = true;
 	return false;
 }

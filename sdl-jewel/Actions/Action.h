@@ -66,7 +66,7 @@ public:
 	static Action* moveBy(float delta, int x, int y);
 	static Action* moveTo(float delta, int x, int y);
 	static Action* alphaTo(float delta, int alpha);
-	static Action* callFunction(std::function<void(void*)> fnct, void* payload);
+	static Action* callFunction(std::function<void(void)> fnct);
 	static Action* sequence(std::initializer_list<Action*> actions);
 	//static Action* group(std::set<Action*>& actions);
 };
