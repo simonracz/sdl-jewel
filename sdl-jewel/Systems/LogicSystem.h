@@ -67,7 +67,7 @@ private:
 	void swapEntities(int index1, int index2);
 
 	void createNewEntities(const std::set<int>& newNodes);
-	void fellEntities(const std::set<int>& nodes);
+	void fellEntities(const std::set<int>& fNodes);
 	
 	void checkForEmptyFields();
 	

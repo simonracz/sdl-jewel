@@ -185,8 +185,8 @@ bool Table::checkSwap(int first, int second)
 {
 	swapElements(first, second);
 	std::set<int> results;
-	checkNode(getNode(first), results);
-	checkNode(getNode(second), results);
+	checkNode(nodes[first], results);
+	checkNode(nodes[second], results);
 	swapElements(first, second);
 	
 	return (results.size()!=0);
@@ -254,7 +254,7 @@ void Table::swapElements(int first, int second)
 void Table::check(std::set<int>& results)
 {
 	for (int i = 63; i>=0; --i) {
-		checkNode(getNode(i), results);
+		checkNode(nodes[i], results);
 	}
 }
 
@@ -262,11 +262,11 @@ void Table::applyNextStep(std::set<int>& nodesFell, std::set<int>& newNodes)
 {
 	std::set<int> results;
 	for (int i = 63; i>=0; --i) {
-		checkNode(getNode(i), results);
+		checkNode(nodes[i], results);
 	}
 	
 	for (auto i : results) {
-		getNode(i).type = NodeType::None;
+		nodes[i].type = NodeType::None;
 	}
 	
 	for (int i=7; i>=0; --i) {
@@ -274,16 +274,18 @@ void Table::applyNextStep(std::set<int>& nodesFell, std::set<int>& newNodes)
 		for (int j=7; j>=0; --j) {
 			if (found) {
 				swapElements(j*8+i, (j+1)*8 +i);
-				if (getNode((j+1)*8 + i).type != NodeType::None) {
+				if (nodes[((j+1)*8 + i)].type != NodeType::None) {
 					nodesFell.insert((j+1)*8 +i);
 				}
-			} else if (getNode(j*8 + i).type == NodeType::None) {
+			} else if (nodes[(j*8 + i)].type == NodeType::None) {
 				found = true;
 			}
 		}
 		if (found) {
 			newNodes.insert(i);
-			getNode(i).type = static_cast<NodeType>(distributions[3](m));
+			int rnd = distributions[3](m);
+			std::cerr << "rnd : " << rnd << "\n";
+			nodes[i].type = static_cast<NodeType>(rnd);
 		}
 	}
 }
@@ -291,7 +293,7 @@ void Table::applyNextStep(std::set<int>& nodesFell, std::set<int>& newNodes)
 bool Table::hasEmpty()
 {
 	for (int i = 63; i>=0; --i) {
-		if (getNode(i).type == NodeType::None) {
+		if (nodes[i].type == NodeType::None) {
 			return true;
 		}
 	}

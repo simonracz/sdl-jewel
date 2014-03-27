@@ -14,6 +14,7 @@
 #include "Action.h"
 #include "World.h"
 #include "AssetManager.h"
+#include "EntityManager.h"
 
 namespace jewel {
 
@@ -187,6 +188,7 @@ void LogicSystem::boom()
 		std::cerr << "call boom on index : " << ind << "\n";
 		entities[ind]->getComponent<RenderingComponent>()->sprite->runAction(Action::sequence({Action::alphaTo(0.2, 0), Action::callFunction([ind,this]{
 			removeEntity(ind);
+			//setProcessing(true);
 		})}));
 		lSprite->runAction(Action::sequence({Action::wait(0.21), Action::callFunction([this]{
 			afterBoom = true;
@@ -222,13 +224,14 @@ void LogicSystem::checkForEmptyFields()
 	fellEntities(nodesToFall);
 }
 
-void LogicSystem::fellEntities(const std::set<int>& nodes)
+void LogicSystem::fellEntities(const std::set<int>& fNodes)
 {
-	for (auto it = nodes.rbegin(); it!=nodes.rend(); ++it) {
+	for (auto it = fNodes.rbegin(); it!=fNodes.rend(); ++it) {
 		int i = (*it) - 8;
-		entities[i]->getComponent<RenderingComponent>()->sprite->runAction(Action::sequence({
-			Action::moveBy(0.2, 0, +80), Action::callFunction([this,i]{
-				swapEntities(i, i+8);
+		swapEntities(i, i+8);
+		entities[*it]->getComponent<RenderingComponent>()->sprite->runAction(Action::sequence({
+			Action::moveBy(0.2, 0, +80), Action::callFunction([this]{
+
 				setProcessing(true);
 			})}));
 	}
@@ -318,8 +321,8 @@ void LogicSystem::processEntities(artemis::ImmutableBag<artemis::Entity*>& bag)
 
 	if (!toBeRemoved.empty()) {
 		for (auto it = toBeRemoved.begin(); it != toBeRemoved.end(); ++it) {
-			Entity* entity = entities[*it];			
-			entity->remove();
+			Entity* entity = entities[*it];
+			world->getEntityManager()->remove(*entity);
 			entities.erase(*it);
 		}
 		toBeRemoved.clear();
