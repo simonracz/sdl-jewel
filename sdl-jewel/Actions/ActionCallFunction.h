@@ -21,7 +21,7 @@ private:
 	bool isFunctionCalled{false};
 	float maxTime;
 protected:
-	bool process(float delta, Sprite* sprite = nullptr) override;
+	bool process(float delta) override;
 	bool isFinished() override;
 public:
 	ActionCallFunction(std::function<void(void*)> fnct, void* payload);

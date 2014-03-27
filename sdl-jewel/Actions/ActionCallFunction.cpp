@@ -16,7 +16,7 @@ ActionCallFunction::ActionCallFunction(std::function<void(void*)> fnct, void* pa
 	//empty
 }
 	
-bool ActionCallFunction::process(float delta, Sprite* sprite)
+bool ActionCallFunction::process(float delta)
 {
 	fnct(payload);
 	std::cout << "payload delivered\n";

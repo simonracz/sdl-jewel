@@ -15,7 +15,7 @@ ActionWait::ActionWait(float delay) : maxTime(delay)
 	//empty
 }
 
-bool ActionWait::process(float delta, Sprite* sprite)
+bool ActionWait::process(float delta)
 {
 	totalTime+=delta;
 	return (totalTime<maxTime);

@@ -26,20 +26,17 @@ void ActionMoveTo::setSprite(Sprite* sprite)
 	}
 }
 
-bool ActionMoveTo::process(float delta, Sprite* sprite)
+bool ActionMoveTo::process(float delta)
 {
-	Sprite *s = this->sprite;
-	if (!s) s = sprite;
-	
 	totalTime+=delta;
 	
 	float d = totalTime / maxTime;
 	
 	//to prevent over sliding
 	if (totalTime>=maxTime) {
-		s->setPosition(targetX, targetY);
+		sprite->setPosition(targetX, targetY);
 	} else {
-		s->setPosition(origX + (targetX-origX)*d, origY + (targetY-origY)*d);
+		sprite->setPosition(origX + (targetX-origX)*d, origY + (targetY-origY)*d);
 	}
 	
 	return (totalTime<maxTime);

@@ -43,7 +43,7 @@ public:
 	 * The Sprite parameter is required for the container Actions.
 	 * It is used only internally.
 	 */
-	virtual bool process(float delta, Sprite* sprite = nullptr) = 0;
+	virtual bool process(float delta) = 0;
 	
 	/**
 	 * Returns true if it's finished.

@@ -45,6 +45,7 @@ protected:
 	void end() override;
 private:
 	void startSwapping(int index1, int index2);
+	void swapEntities(int index1, int index2);
 
 	InputHandler* inputHandler{nullptr};
 	Table* table;

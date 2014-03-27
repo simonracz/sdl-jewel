@@ -46,6 +46,9 @@ public:
 	Node& down(int index);
 	Node& left(int index);
 	Node& right(int index);
+
+	Node& gUp(int index);
+	Node& gUp(const Node& node);
 	
 	Node& up(const Node& node);
 	Node& down(const Node& node);

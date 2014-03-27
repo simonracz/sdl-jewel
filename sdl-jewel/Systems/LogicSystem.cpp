@@ -77,7 +77,9 @@ template <typename T> int sgn(T val) {
 	
 void LogicSystem::startSwapping(int index1, int index2)
 {
-	std::cout << "start swapping\n";
+	using namespace std;
+	
+	cout << "start swapping\n";
 	Sprite* sprite1 = entities[index1]->getComponent<RenderingComponent>()->sprite;
 	Sprite* sprite2 = entities[index2]->getComponent<RenderingComponent>()->sprite;
 	
@@ -86,16 +88,39 @@ void LogicSystem::startSwapping(int index1, int index2)
 	int y1 = - 80 * sgn((index1 - index2)/8);
 	int y2 =   80 * sgn((index1 - index2)/8);
 	
-	sprite1->runAction(Action::moveBy(1.0, x1, y1));
-	sprite2->runAction(Action::moveBy(1.0, x2, y2));
+	if (table->checkSwap(index1, index2)) {
+		table->swapElements(index1, index2);
+		swapEntities(index1, index2);
+
+		sprite1->runAction(Action::moveBy(1.0, x1, y1));
+		sprite2->runAction(Action::moveBy(1.0, x2, y2));
+		
+		//BOOM
+		
+		return;
+	}
 	
-	std::deque<Action*>* d = new std::deque<Action*>();
-	d->push_back(Action::wait(1.0));
-	//d->push_back(Action::callFunction(std::bind(&LogicSystem::cbResetInput, this, std::placeholders::_1), nullptr));
-	d->push_back(Action::callFunction([&](void*){
+	deque<Action*>* d1 = new deque<Action*>();
+	d1->push_back(Action::moveBy(0.2, x1, y1));
+	d1->push_back(Action::moveBy(0.2, x2, y2));
+	sprite1->runAction(Action::sequence(d1));
+	deque<Action*>* d2 = new deque<Action*>();
+	d2->push_back(Action::moveBy(0.2, x2, y2));
+	d2->push_back(Action::moveBy(0.2, x1, y1));
+	sprite2->runAction(Action::sequence(d2));
+	
+	deque<Action*>* d = new deque<Action*>();
+	d->push_back(Action::wait(0.4));
+	//d->push_back(Action::callFunction(bind(&LogicSystem::cbResetInput, this, placeholders::_1), nullptr));
+	d->push_back(Action::callFunction([=](void*){
 		inputHandler->setProcessing(true);
 	}, nullptr));
 	lSprite->runAction(Action::sequence(d));
+}
+	
+void LogicSystem::swapEntities(int index1, int index2)
+{
+	
 }
 
 void LogicSystem::cbResetInput(void* payload)

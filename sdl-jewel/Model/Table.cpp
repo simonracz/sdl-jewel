@@ -104,8 +104,6 @@ Node& Table::down(int index)
 {
 	int ret = nodes[index].down();
 	if (ret == Node::END) {
-		//std::cout << "returning nullNode at :" << index << "\n";
-		//SDL_LogDebug(SDL_LOG_CATEGORY_APPLICATION, "returning nullNode at index %d", index);
 		return nullNode;
 	}
 	
@@ -135,6 +133,21 @@ Node& Table::right(int index)
 
 }
 
+Node& Table::gUp(int index)
+{
+	int ret = nodes[index].gUp();
+	if (ret == Node::END) {
+		return nullNode;
+	}
+	
+	return nodes[ret];
+}
+
+Node& Table::gUp(const Node& node)
+{
+	return gUp(node.index);
+}
+	
 Node& Table::up(const Node& node)
 {
 	return up(node.index);

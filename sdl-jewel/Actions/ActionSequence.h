@@ -19,11 +19,13 @@ private:
 	float totalTime{0};
 	float maxTime;
 protected:
-	bool process(float delta, Sprite* sprite = nullptr) override;
+	bool process(float delta) override;
 	bool isFinished() override;
 public:
 	ActionSequence(std::deque<Action*>* actions);
 	~ActionSequence();
+	
+	void setSprite(Sprite* sprite) override;
 	
 	float getMaxTime() override;
 };

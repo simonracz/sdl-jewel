@@ -65,8 +65,7 @@ void Action::removeFromSprite()
 }
 	
 void Action::setParentAction(Action* action){
-	parentAction = action;
-	setSprite(nullptr);
+	parentAction = action;	
 	actionSystem->removeAction(this);
 }
 	

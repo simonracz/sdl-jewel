@@ -25,20 +25,17 @@ void ActionAlphaTo::setSprite(Sprite* sprite)
 	}
 }
 
-bool ActionAlphaTo::process(float delta, Sprite* sprite)
+bool ActionAlphaTo::process(float delta)
 {
-	Sprite *s = this->sprite;
-	if (!s) s = sprite;
-	
 	totalTime+=delta;
 	
 	float d = totalTime / maxTime;
 	
 	//to prevent over sliding
 	if (totalTime>=maxTime) {
-		s->setAlpha(targetAlpha);
+		sprite->setAlpha(targetAlpha);
 	} else {
-		s->setAlpha(origAlpha + (targetAlpha-origAlpha)*d);
+		sprite->setAlpha(origAlpha + (targetAlpha-origAlpha)*d);
 	}
 	
 	return (totalTime<maxTime);
