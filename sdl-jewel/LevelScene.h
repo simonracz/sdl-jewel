@@ -47,6 +47,7 @@ private:
 	std::chrono::high_resolution_clock::time_point gameStartTime;
 	int gameScore{0};
 	int gameTime{60};
+	bool gameOver{false};
 public:
 	LevelScene(SDL_Renderer* renderer);
 	

@@ -38,6 +38,8 @@ public:
 	
 	void addEntity(int index, artemis::Entity* entity);
 	static SDL_Rect srcRectToNodeType(NodeType type);
+	
+	void gameOver();
 protected:
 	bool checkProcessing() override;
 	
@@ -52,6 +54,7 @@ private:
 	ScoreDelegate* delegate;
 	bool toBeBoom{false};
 	bool afterBoom{false};
+	bool isGameOver{false};
 	void boom();
 	void removeEntity(int index);
 

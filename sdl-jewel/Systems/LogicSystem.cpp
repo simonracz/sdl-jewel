@@ -139,7 +139,7 @@ void LogicSystem::startSwapping(int ind1, int ind2)
 	sprite2->runAction(Action::sequence({Action::moveBy(0.2, x2, y2), Action::moveBy(0.2, x1, y1)}));
 
 	lSprite->runAction(Action::sequence({Action::wait(0.41), Action::callFunction([this]{
-		inputHandler->setProcessing(true);
+		inputHandler->setProcessing(true && !isGameOver);
 	})}));
 }
 	
@@ -180,7 +180,7 @@ void LogicSystem::boom()
 	int size = static_cast<int>(results.size());
 	//std::cerr << "at boom() table->check results size : " << results.size() << "\n";
 	if (results.empty()) {
-		inputHandler->setProcessing(true);
+		inputHandler->setProcessing(true && !isGameOver);
 		return;
 	}
 	
@@ -294,6 +294,11 @@ SDL_Rect LogicSystem::srcRectToNodeType(NodeType type)
 			return SDL_Rect{0,0,0,0};
 			break;
 	}
+}
+	
+void LogicSystem::gameOver() {
+	isGameOver = true;
+	inputHandler->setProcessing(false);
 }
 	
 void LogicSystem::addEntity(int index, artemis::Entity* entity)

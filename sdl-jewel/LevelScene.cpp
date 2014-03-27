@@ -98,7 +98,16 @@ void LevelScene::update(float delta)
 	
 	using namespace std::chrono;
 	
-	renderingSystem->setTime(60 - static_cast<int>((duration_cast<duration<double>>(high_resolution_clock::now() - gameStartTime)).count()));
+	int time = 60 - static_cast<int>((duration_cast<duration<double>>(high_resolution_clock::now() - gameStartTime)).count());
+	
+	if (!gameOver && (time<0)) {
+		logicSystem->gameOver();
+		gameOver = true;
+	}
+	
+	if (!gameOver) {
+		renderingSystem->setTime(time);
+	}
 }
 
 } //namespace

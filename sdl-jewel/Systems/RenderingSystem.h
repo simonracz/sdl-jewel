@@ -39,12 +39,18 @@ private:
 	Sprite* curtain;
 	SDL_Renderer* renderer;
 	TTF_Font* font;
-	SDL_Color fontColor;
+	SDL_Color scoreFontColor;
+	SDL_Color timeFontColor;
+	SDL_Color gameOverColor;
 	SDL_Rect destTimeRect;
 	SDL_Rect destScoreRect;
+	SDL_Rect gameOverRect;
 	int score{0};
 	int time{60};
-	char buf[10];
+	char buf[20];
+	
+	void initColors();
+	void initDestRects();
 };
 
 	
