@@ -16,7 +16,7 @@ namespace jewel {
 
 using namespace artemis;
 	
-const int Application::FRAMES_PER_SECOND = 30;
+const int Application::FRAMES_PER_SECOND = 60;
 	
 Application::Application() : fps(1.0 / static_cast<double>(FRAMES_PER_SECOND))
 {
@@ -126,7 +126,7 @@ bool Application::process()
 	delta = (duration_cast<duration<double>>(steady_clock::now() - frameStartTime)).count();
 	
 	if (delta < fps) {
-		SDL_Delay((fps - delta) * 1000);
+		SDL_Delay((fps - delta) * 900);
 	}
 	
 	lastFrameStartTime = frameStartTime;

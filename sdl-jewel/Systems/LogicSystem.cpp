@@ -18,6 +18,8 @@
 
 namespace jewel {
 
+const float LogicSystem::GAME_SPEED = 0.2;
+	
 LogicSystem::LogicSystem(Table* table, AssetManager* assetManager, Sprite* aLongLivedSprite, ScoreDelegate* delegate) : table(table), assetManager(assetManager), lSprite(aLongLivedSprite), delegate(delegate)
 {
 	//empty
@@ -122,12 +124,12 @@ void LogicSystem::startSwapping(int ind1, int ind2)
 	int y2 =   80 * sgn((ind1 - ind2)/8);
 	
 	if (table->checkSwap(ind1, ind2)) {
-		sprite1->runAction(Action::moveBy(0.2, x1, y1));
-		sprite2->runAction(Action::moveBy(0.2, x2, y2));
+		sprite1->runAction(Action::moveBy(GAME_SPEED, x1, y1));
+		sprite2->runAction(Action::moveBy(GAME_SPEED, x2, y2));
 		table->swapElements(ind1, ind2);
 		swapEntities(ind1, ind2);
 		//BOOM:)
-		lSprite->runAction(Action::sequence({Action::wait(0.2), Action::callFunction([this]{
+		lSprite->runAction(Action::sequence({Action::wait(GAME_SPEED), Action::callFunction([this]{
 			toBeBoom = true;
 			setProcessing(true);
 		})}));
@@ -135,10 +137,10 @@ void LogicSystem::startSwapping(int ind1, int ind2)
 	}
 	
 	//wrong path
-	sprite1->runAction(Action::sequence({Action::moveBy(0.2, x1, y1), Action::moveBy(0.2, x2, y2)}));
-	sprite2->runAction(Action::sequence({Action::moveBy(0.2, x2, y2), Action::moveBy(0.2, x1, y1)}));
+	sprite1->runAction(Action::sequence({Action::moveBy(GAME_SPEED, x1, y1), Action::moveBy(GAME_SPEED, x2, y2)}));
+	sprite2->runAction(Action::sequence({Action::moveBy(GAME_SPEED, x2, y2), Action::moveBy(GAME_SPEED, x1, y1)}));
 
-	lSprite->runAction(Action::sequence({Action::wait(0.4), Action::callFunction([this]{
+	lSprite->runAction(Action::sequence({Action::wait(2*GAME_SPEED), Action::callFunction([this]{
 		inputHandler->setProcessing(true && !isGameOver);
 	})}));
 }
@@ -185,16 +187,16 @@ void LogicSystem::boom()
 	}
 	
 	for (auto ind : results) {
-		entities[ind]->getComponent<RenderingComponent>()->sprite->runAction(Action::sequence({Action::alphaTo(0.2, 0), Action::callFunction([ind,this]{
+		entities[ind]->getComponent<RenderingComponent>()->sprite->runAction(Action::sequence({Action::alphaTo(GAME_SPEED, 0), Action::callFunction([ind,this]{
 			removeEntity(ind);
 		})}));
 	}
 	lSprite->runAction(Action::sequence({
-		Action::wait(0.1),
+		Action::wait(GAME_SPEED/2),
 		Action::callFunction([this, size]{
 			delegate->addScore(size);
 		}),
-		Action::wait(0.1),
+		Action::wait(GAME_SPEED/2),
 		Action::callFunction([this]{
 			afterBoom = true;
 			setProcessing(true);
@@ -242,7 +244,7 @@ void LogicSystem::fellEntities(const std::set<int>& fNodes)
 		int i = (*it) - 8;
 		swapEntities(i, i+8);
 		entities[*it]->getComponent<RenderingComponent>()->sprite->runAction(Action::sequence({
-			Action::moveBy(0.2, 0, 80), Action::callFunction([this]{
+			Action::moveBy(2*GAME_SPEED/3, 0, 80), Action::callFunction([this]{
 				setProcessing(true);
 			})}));
 	}

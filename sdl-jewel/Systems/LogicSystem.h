@@ -57,6 +57,7 @@ private:
 	bool isGameOver{false};
 	void boom();
 	void removeEntity(int index);
+	static const float GAME_SPEED;
 
 	//The first parameter is the table index.
 	//It is possible that there is no entity for a given valid index
