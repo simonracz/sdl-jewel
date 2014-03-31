@@ -127,7 +127,7 @@ void LogicSystem::startSwapping(int ind1, int ind2)
 		table->swapElements(ind1, ind2);
 		swapEntities(ind1, ind2);
 		//BOOM:)
-		lSprite->runAction(Action::sequence({Action::wait(0.21), Action::callFunction([this]{
+		lSprite->runAction(Action::sequence({Action::wait(0.2), Action::callFunction([this]{
 			toBeBoom = true;
 			setProcessing(true);
 		})}));
@@ -138,7 +138,7 @@ void LogicSystem::startSwapping(int ind1, int ind2)
 	sprite1->runAction(Action::sequence({Action::moveBy(0.2, x1, y1), Action::moveBy(0.2, x2, y2)}));
 	sprite2->runAction(Action::sequence({Action::moveBy(0.2, x2, y2), Action::moveBy(0.2, x1, y1)}));
 
-	lSprite->runAction(Action::sequence({Action::wait(0.41), Action::callFunction([this]{
+	lSprite->runAction(Action::sequence({Action::wait(0.4), Action::callFunction([this]{
 		inputHandler->setProcessing(true && !isGameOver);
 	})}));
 }
@@ -188,17 +188,17 @@ void LogicSystem::boom()
 		entities[ind]->getComponent<RenderingComponent>()->sprite->runAction(Action::sequence({Action::alphaTo(0.2, 0), Action::callFunction([ind,this]{
 			removeEntity(ind);
 		})}));
-		lSprite->runAction(Action::sequence({
-			Action::wait(0.11),
-			Action::callFunction([this, size]{
-				delegate->addScore(size);
-			}),
-			Action::wait(0.1),
-			Action::callFunction([this]{
+	}
+	lSprite->runAction(Action::sequence({
+		Action::wait(0.1),
+		Action::callFunction([this, size]{
+			delegate->addScore(size);
+		}),
+		Action::wait(0.1),
+		Action::callFunction([this]{
 			afterBoom = true;
 			setProcessing(true);
 		})}));
-	}
 	
 }
 	
@@ -242,7 +242,7 @@ void LogicSystem::fellEntities(const std::set<int>& fNodes)
 		int i = (*it) - 8;
 		swapEntities(i, i+8);
 		entities[*it]->getComponent<RenderingComponent>()->sprite->runAction(Action::sequence({
-			Action::moveBy(0.2, 0, +80), Action::callFunction([this]{
+			Action::moveBy(0.2, 0, 80), Action::callFunction([this]{
 				setProcessing(true);
 			})}));
 	}
